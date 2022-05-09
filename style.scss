@@ -1,0 +1,719 @@
+// @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+//CSS Tools: Reset CSS
+// https://meyerweb.com/eric/tools/css/reset/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body {
+  margin:0px;
+  background: #E5E5E5;
+  min-width: 375px;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 35px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h4 {
+  font-size: 25px;
+}
+
+p {
+  font-size: 15px;
+}
+
+* {
+  font-family: "Montserrat";
+}
+
+@mixin section_box() {
+  display: flex;
+  justify-content: center; //teksts iekš box ir centrēts horizontāli
+  align-items: center; //teksts iekš box ir centrēts vertikāli
+
+  border: 8px solid #000000;
+    
+  font-style: normal;
+  font-weight: 700;
+  // font-size: 30px;
+  line-height: 38px;
+
+  letter-spacing: 0.35538em;
+  text-align: center;
+}
+
+.header {
+    // top: 262px;
+    position: sticky;
+    background: #0B0B0B;
+  }
+
+   .menu {  // šo div vajag, lai lai izpleš krāsu pa visu header platumu
+    display:flex;  // Izlīdzināšana priekš navigācijas box- navbar
+    justify-content: right;
+    align-items: center;
+
+    max-width: 2299px; 
+    height: 66px;
+    padding-right: 77,84px;
+    box-sizing: border-box;
+    margin: auto; /* Lai header nostātos pa vidu */
+  }
+
+  // Augšējās navigācijas bloks ar linkiem
+  .navbar {
+    // position: absolute;
+    display:flex; // Izlīdzināšana priekš navigācijas bloka linkiem
+    justify-content: right;
+    padding-right: 20px;
+    align-items: center;
+
+    max-width: 762px; /* max-width izpleš par iekšējā teksta minimālo platumu */
+    height: 46px;
+
+  }
+
+  /* Navigācijas linki */
+  .navbar__lnk {
+    font-style: normal;
+
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 21px;
+    padding: 0px 50px;
+    box-sizing: border-box;
+    
+    text-decoration: none;
+    color: #FFFFFF;
+
+  }
+  
+  .navbar__lnk:hover {
+    color: lavender;
+  }
+
+
+  /* Navigācijas links CONTACT ME */
+  .navbar__lnkcnt {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+
+    // width: 176,04px;
+    // height: 46px;
+
+    background: #FFFFFF;
+    border: 4px solid #FFFFFF;
+    padding: 10px 50px; 
+    box-sizing: border-box;
+    border-radius: 30px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .navbar__lnkcnt:hover {
+    color: rgb(105, 105, 143);
+  }
+
+  .owner_section {
+    display: flex; // lai nostrādā margin:auto iekš .owner_section > div
+    max-width: 1920px;
+    background: #D7D7D7;
+    margin:0px auto auto auto; // lai visa sekcija pati par sevi nostājas pa vidu
+  }
+
+  // Sections (Sadaļas)
+  .owner_two_blocks { 
+    // position: relative;
+    display:flex; // Lai sastājas rindā teksta bloks ar bildi
+    // justify-content: center;
+    align-items: center;
+    padding: 86px 0px 0px 0px;
+    // box-sizing: border-box;
+    // // height: 1022px;
+    // top: 86px;
+    margin: 0px auto 0px auto; 
+}
+
+.owner_desc {
+  // position: relative;
+  // top: 351px;
+  // max-width: 530px;
+  // height:320px;
+
+  // display:flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+
+  padding: 0px 57px 0px 0px;
+  background: #850c0c;
+
+}
+
+img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.owner_two_blocks > * {
+  max-width: 45%;
+}
+
+// .owner__hi {
+//   font-weight: 700;
+//   font-size: 35px;
+//   line-height: 47px;
+//   margin: 0px 0px 20px 0px;
+
+//   color: #000000;
+// }
+  
+// .owner__vineta {
+//   font-weight: 700;
+//   font-size: 50px;
+//   line-height: 94px;
+
+//   color: #000000;
+// }
+
+// .owner__pm {
+//   font-family: "Raleway";
+//   font-weight: 800;
+//   font-size: 25px;
+//   line-height: 29px;
+// }
+
+.icon_top {
+  // position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 140px;
+  // top: 42px;
+  padding: 60px 57px 0px 0px;
+}
+
+.icon_top a {
+  width: 61px;
+  height: 56px; 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #C4C4C4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  // margin: 15px;
+  
+}
+
+.icon_top a:hover {
+  box-shadow: 0px 4px 4px rgb(109, 109, 155);
+}
+
+  // Section IT berries
+  .itberries {
+    // position: relative;
+    
+    font-weight: 700;
+    line-height: 94px;
+
+    max-width: 1920px; 
+    // height: 313px;
+    // top: -5px;
+    padding: 54px 0px 0px 5%;
+    box-sizing: border-box;
+
+    background: linear-gradient(90.18deg, #1D1D1D 31.74%, #1D1D1D 90.49%, #1D1D1D 90.49%);
+
+    margin: auto;
+
+    color: #FFFFFF;
+  }
+
+  // Section About me
+  .aboutme_section {
+    // position: relative;
+    max-width: 1920px;
+    // height: 1413px;
+    // height: 2017px;
+    // top: -5px;
+
+    background: radial-gradient(50% 50% at 50% 50%, rgba(26, 21, 21, 0) 0%, rgba(1, 1, 1, 0.16) 100%), #FFFFFF;;
+    // background: #000000;
+    margin: auto; 
+  }
+
+    /* ABOUT ME box by ID */
+    #aboutme {
+      // position: relative;
+
+      // top: 142px;
+      max-width: 404px;
+      // height: 107px;
+      // min-width: 200px;
+
+      @include section_box;
+      
+      padding: 15px;
+      box-sizing: border-box;
+
+      margin: auto;
+
+      color: #000000;
+  }
+
+  .aboutme_block {
+    max-width: 986px;
+    // height: 816px;
+    // left: 489px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+
+    background: pink;
+    
+  }
+
+  .aboutme_block h1 {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  // .icon__pmi {
+  //   max-width: 25%;
+  // }
+
+  .acp_pmi_block{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .acp_pmi_block div {
+    align-items: center;
+    text-align: center;
+  }
+
+  .cert_block{
+    padding-right: 30px;
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-start;
+  }
+
+  .cert_block h2 {
+    padding-bottom: 30px;
+    font-size: 30px;
+  }
+
+  .cert_block h3 {
+    font-size: 20px;
+  }
+
+    /* separatorBlack 1 */
+  .seperatorBalck { // netiek izmantots
+    // position: relative;
+    width: 170px;
+    height: 12px;
+    // left: 875px;
+    // top: 551px;
+    background: url(separatorBlack.png);
+    // margin:auto;
+  }
+
+    /* Skills BOX by ID */
+    #skills {
+      // position: relative;
+      display: flex;
+      justify-content: center; //teksts iekš box ir centrēts horizontāli
+      align-items: center; //teksts iekš box ir centrēts vertikāli
+
+      // top: 1256px;
+      max-width: 404px;
+      // height: 107px;
+      // min-width: 200px;
+
+      @include section_box;
+
+      padding: 15px;
+      box-sizing: border-box;
+
+      margin: auto;
+
+      color: #000000;
+    }
+
+    .skills_block {
+      max-width: 1004px;
+      // height: 1413px;
+      background: #850c0c;
+      margin:auto;
+    }
+
+    .skills_block h1 {
+      padding: 40px 0px 20px 0px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 30px;
+      // display:flex;
+      // flex-direction: column;
+      // line-height: 37px;
+      // display: inline-block;
+      // align-items: center;
+
+      letter-spacing: 0.35538em;
+      // text-align: center;
+    }
+
+      /* IT skills */
+      .skills_block_pm {
+        max-width: 986px; //izplešas platumā pa vecāka div
+        // height: 400px;
+        background: rgb(218, 164, 173);
+        // display: flex;
+        // flex-wrap: wrap;
+        // align-items: center;
+      }
+  
+
+  /* IT skills */
+    .skills_block_it {
+      max-width: 986px; //izplešas platumā pa vecāka div
+      // height: 400px;
+      background: pink;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin:auto;
+      // justify-content: space-between;
+      // align-items: center;
+      // justify-content: space-between;
+      // flex-wrap: wrap;
+    }
+
+    .icon_skills {
+      // position: absolute;
+      // width: 80px;
+      // height: 74px;
+      // left: 530px;
+      // top: 1442px;
+      
+      width: 100%;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 37px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      
+      letter-spacing: 0.18538em;
+      background: blue;
+      
+      color: #000000;
+    }
+
+    .icon_skills div {
+      // padding: 0px 60px 0px 60px;
+      width:21%;
+      text-align: center;
+    }
+
+    .gallery_section {
+      // position: relative;
+      max-width: 1920px;
+      // height: 1305px;
+      // top:-5px;
+  
+      // background: #D7D7D7;
+      background: pink;
+      margin: auto; 
+    }
+
+    /* Gallery BOX by ID */
+    #gallery {
+      // position: relative;
+      display: flex;
+      justify-content: center; //teksts iekš box ir centrēts horizontāli
+      align-items: center; //teksts iekš box ir centrēts vertikāli
+
+      max-width: 482px;
+      // height: 107px;
+      min-width: 200px;
+      // top: -200px;
+
+      @include section_box;
+
+      padding: 15px;
+      box-sizing: border-box;
+
+      margin: auto;
+
+      color: #000000;
+    }
+
+    // .gallery__block {
+    //   display: grid;
+    //   grid-template-columns: 33.3% 33.3% 33.3%;
+    //   grid-template-rows: 1fr 1fr;
+    //   // grid-gap: 1.25em 3.5em;
+    //   min-height: 5rem;
+    //   width:100%;
+    //   border: 1px solid #353535;
+  	// }
+
+    .gallery_row {
+      display: flex;
+      flex-wrap: wrap;
+      // padding: 0 4px;
+      // border: 1px solid #353535;
+    }
+    
+    /* Create two equal columns that sits next to each other */
+    .gallery_column {
+      flex: 100%;
+      // padding: 0 4px;
+    }
+    
+    .gallery_column img {
+      // margin-top: 8px;
+      vertical-align: middle;
+    }
+
+
+  // Section Contact
+  .contact_section {
+    // position: relative;
+    max-width: 1920px;
+    // height: 1178px;
+
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(26, 21, 21, 0) 0%, rgba(0, 0, 0, 0.16) 100%), #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    margin: auto;
+  }
+
+/* Contact BOX by ID */
+  #contact {
+    // position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 404px;
+    // height: 107px;
+    // top: 142px;
+
+    @include section_box;
+
+    padding: 15px;
+    box-sizing: border-box;
+    
+    margin: auto;
+    color: #000000;
+
+  }
+
+/* Contact input box */
+  .contact__block {
+    // position: relative;
+    display: flex;
+    // flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    // top: 302px;
+
+  }
+  
+  .contact__block input /*[type="name"]*/ {
+    width: 300px;
+    height: 50px;
+
+    font-size: inherit;
+    background: inherit;
+
+    border: none;
+    border-bottom: 5px solid #000000;
+    border-left: 5px solid #000000;
+   
+    margin: 20px 0px;
+  }
+
+  .contact__block input[type="message"] {
+    width: 300px;
+    height: 150px;
+  }
+  
+  .contact__block input:focus,
+  button:focus {
+    box-shadow: 0px 0px 10px rgba(82, 0, 136, 0.616);
+  }
+  
+  #submit {
+    top: 500px;
+    width: 120px;
+    height: 30px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    letter-spacing: 0.1em;
+  
+    border: none;
+    border-left: 5px solid #000000;
+    border-right: 5px solid #000000;
+  
+    margin: 30px auto 0px auto;
+  }
+  
+  #submit a {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  #submit a:hover {
+    opacity: 0.7;
+  }
+
+  // Footer section
+
+  footer {
+    display: flex;
+    justify-content: center; // iekšējā bloka izvietojums pa vidu footerim
+    align-items: center;
+
+    max-width: 1920px;
+    // height: 326px;
+    // padding: 69px;
+    // box-sizing: border-box;
+   background: #1A1A1A;
+    margin:auto;
+  } 
+
+  .footer_section { 
+    display: flex;
+    justify-content: space-evenly; // saturs blokā
+    flex-direction: column;
+    text-align: center;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    
+    letter-spacing: 0.18538em;
+
+    max-width: 355px;
+    height: 50%;
+    // background:pink;
+  }
+
+  footer * {
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+
+  // .icons_bottom {
+  //   background: #850c0c;
+  // }
+
+  @media only screen and (max-width: 890px) {
+    img {
+      width:85%;
+      -o-object-fit: cover;
+         object-fit: cover;
+      }
+
+    .owner_section > div {
+      padding-top:20px;
+    }
+
+    .owner__desc {
+    padding-right: 5px;
+    }
+  
+    h1 {
+      font-size: 35px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    h3 {
+    font-size: 15px;
+  }
+
+    h4 {
+      font-size: 10px;
+  }
+
+  .icon_top {
+    padding-top: 10px;
+  }
+}
+
+  @media only screen and (max-width: 684px) {
+    .navbar__lnk {
+      padding:15px;
+    }
+    .navbar {
+      padding-right:7px;
+    }
+  }
+
+@media only screen and (max-width: 684px) {
+    .navbar__lnk {
+      padding:10px;
+    }
+
+    .navbar__lnkcnt{
+    padding: 15px;
+    }
+}
