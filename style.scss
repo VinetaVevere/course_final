@@ -19,7 +19,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	// font: inherit;
 	vertical-align: baseline;
 }
 
@@ -58,15 +58,21 @@ p {
   justify-content: center; //teksts iekš box ir centrēts horizontāli
   align-items: center; //teksts iekš box ir centrēts vertikāli
 
+  max-width: 420px;
+  min-width: 200px;// nestrādā
   border: 8px solid #000000;
-    
+  padding: 15px 0px 15px 0px;
+  margin: 110px auto 60px auto;
+
   font-style: normal;
   font-weight: 700;
-  // font-size: 30px;
+  font-size: 30px;
   line-height: 38px;
 
   letter-spacing: 0.35538em;
   text-align: center;
+
+  color: #000000;
 }
 
 .header {
@@ -87,9 +93,17 @@ p {
     margin: auto; /* Lai header nostātos pa vidu */
   }
 
+  .menu > * {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu > .toggle {
+    display: none;
+  }
+
   // Augšējās navigācijas bloks ar linkiem
   .navbar {
-    // position: absolute;
     display:flex; // Izlīdzināšana priekš navigācijas bloka linkiem
     justify-content: right;
     padding-right: 20px;
@@ -123,11 +137,7 @@ p {
   /* Navigācijas links CONTACT ME */
   .navbar__lnkcnt {
     display: flex;
-    // justify-content: center;
     align-items: center;
-
-    // width: 176,04px;
-    // height: 46px;
 
     background: #FFFFFF;
     border: 4px solid #FFFFFF;
@@ -145,9 +155,10 @@ p {
   }
 
   .navbar__lnkcnt:hover {
-    color: rgb(105, 105, 143);
+    opacity: 0.7;
   }
 
+  // Sections (Sadaļas)
   .owner_section {
     display: flex; // lai nostrādā margin:auto iekš .owner_section > div
     max-width: 1920px;
@@ -155,32 +166,15 @@ p {
     margin:0px auto auto auto; // lai visa sekcija pati par sevi nostājas pa vidu
   }
 
-  // Sections (Sadaļas)
   .owner_two_blocks { 
-    // position: relative;
     display:flex; // Lai sastājas rindā teksta bloks ar bildi
-    // justify-content: center;
     align-items: center;
     padding: 86px 0px 0px 0px;
-    // box-sizing: border-box;
-    // // height: 1022px;
-    // top: 86px;
     margin: 0px auto 0px auto; 
 }
 
 .owner_desc {
-  // position: relative;
-  // top: 351px;
-  // max-width: 530px;
-  // height:320px;
-
-  // display:flex;
-  // flex-direction: column;
-  // justify-content: space-between;
-
   padding: 0px 57px 0px 0px;
-  background: #850c0c;
-
 }
 
 img {
@@ -192,32 +186,7 @@ img {
   max-width: 45%;
 }
 
-// .owner__hi {
-//   font-weight: 700;
-//   font-size: 35px;
-//   line-height: 47px;
-//   margin: 0px 0px 20px 0px;
-
-//   color: #000000;
-// }
-  
-// .owner__vineta {
-//   font-weight: 700;
-//   font-size: 50px;
-//   line-height: 94px;
-
-//   color: #000000;
-// }
-
-// .owner__pm {
-//   font-family: "Raleway";
-//   font-weight: 800;
-//   font-size: 25px;
-//   line-height: 29px;
-// }
-
 .icon_top {
-  // position: relative;
   display: flex;
   justify-content: space-between;
   width: 140px;
@@ -233,8 +202,6 @@ img {
   align-items: center;
   background: #C4C4C4;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  // margin: 15px;
-  
 }
 
 .icon_top a:hover {
@@ -242,18 +209,14 @@ img {
 }
 
   // Section IT berries
-  .itberries {
-    // position: relative;
-    
+  .itberries_section {
+   
     font-weight: 700;
     line-height: 94px;
 
     max-width: 1920px; 
-    // height: 313px;
-    // top: -5px;
     padding: 54px 0px 0px 5%;
     box-sizing: border-box;
-
     background: linear-gradient(90.18deg, #1D1D1D 31.74%, #1D1D1D 90.49%, #1D1D1D 90.49%);
 
     margin: auto;
@@ -263,38 +226,21 @@ img {
 
   // Section About me
   .aboutme_section {
-    // position: relative;
     max-width: 1920px;
-    // height: 1413px;
-    // height: 2017px;
-    // top: -5px;
-
     background: radial-gradient(50% 50% at 50% 50%, rgba(26, 21, 21, 0) 0%, rgba(1, 1, 1, 0.16) 100%), #FFFFFF;;
     // background: #000000;
     margin: auto; 
+    padding-top: 1px; // lai izpleš līdz augšai sekciju no boxa
   }
 
     /* ABOUT ME box by ID */
     #aboutme {
-      // position: relative;
-
-      // top: 142px;
-      max-width: 404px;
-      // height: 107px;
-      // min-width: 200px;
-
-      @include section_box;
-      
-      padding: 15px;
-      box-sizing: border-box;
-
-      margin: auto;
-
-      color: #000000;
+      @include section_box;   
   }
 
   .aboutme_block {
     max-width: 986px;
+    // padding: 88px 0px 88px 0;
     // height: 816px;
     // left: 489px;
   
@@ -305,7 +251,7 @@ img {
     flex-wrap: wrap;
     margin: auto;
 
-    background: pink;
+    // background: pink;
     
   }
 
@@ -313,10 +259,6 @@ img {
     font-size: 32px;
     font-weight: bold;
   }
-
-  // .icon__pmi {
-  //   max-width: 25%;
-  // }
 
   .acp_pmi_block{
     display: flex;
@@ -347,107 +289,67 @@ img {
 
     /* separatorBlack 1 */
   .seperatorBalck { // netiek izmantots
-    // position: relative;
     width: 170px;
     height: 12px;
-    // left: 875px;
-    // top: 551px;
     background: url(separatorBlack.png);
-    // margin:auto;
   }
+  
+    /* Skills "Section"*/
 
     /* Skills BOX by ID */
     #skills {
-      // position: relative;
-      display: flex;
-      justify-content: center; //teksts iekš box ir centrēts horizontāli
-      align-items: center; //teksts iekš box ir centrēts vertikāli
-
-      // top: 1256px;
-      max-width: 404px;
-      // height: 107px;
-      // min-width: 200px;
-
-      @include section_box;
-
-      padding: 15px;
-      box-sizing: border-box;
-
-      margin: auto;
-
-      color: #000000;
+     @include section_box;
     }
 
     .skills_block {
       max-width: 1004px;
-      // height: 1413px;
-      background: #850c0c;
       margin:auto;
     }
 
-    .skills_block h1 {
-      padding: 40px 0px 20px 0px;
-      font-style: normal;
-      font-weight: 700;
-      font-size: 30px;
-      // display:flex;
-      // flex-direction: column;
-      // line-height: 37px;
-      // display: inline-block;
-      // align-items: center;
-
+    .skills_block h3 {
+      padding: 60px 0px 40px 0px;
       letter-spacing: 0.35538em;
-      // text-align: center;
     }
 
-      /* IT skills */
-      .skills_block_pm {
-        max-width: 986px; //izplešas platumā pa vecāka div
-        // height: 400px;
-        background: rgb(218, 164, 173);
-        // display: flex;
-        // flex-wrap: wrap;
-        // align-items: center;
-      }
+    .skills_icon_lrblock {
+      padding-bottom: 10%;
+    }
+
+    .skills_row {
+      display: -ms-flexbox; /* IE10 */
+      display: flex;
+      flex-wrap: wrap;
+      -ms-flex-wrap: wrap; /* IE10 */
+      padding: 20px 0;
+    }
+    
+    /* Create equal columns that sits next to each other */
+    .skills_column {
+      -ms-flex: 24%; /* IE10 */
+      flex: 24%;
+      max-width: 100%;
+      padding: 0px 4px;
+    }
   
 
-  /* IT skills */
-    .skills_block_it {
-      max-width: 986px; //izplešas platumā pa vecāka div
-      // height: 400px;
-      background: pink;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      margin:auto;
-      // justify-content: space-between;
-      // align-items: center;
-      // justify-content: space-between;
-      // flex-wrap: wrap;
+/* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 808px) {
+    .skills_column {
+      -ms-flex: 45%;
+      flex: 45%;
+      max-width: 100%;
+      text-align: center;
     }
+  }
 
-    .icon_skills {
-      // position: absolute;
-      // width: 80px;
-      // height: 74px;
-      // left: 530px;
-      // top: 1442px;
-      
-      width: 100%;
-      font-style: normal;
-      font-weight: 700;
-      font-size: 30px;
-      line-height: 37px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      align-items: center;
-      
-      letter-spacing: 0.18538em;
-      background: blue;
-      
-      color: #000000;
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .skills_column {
+      -ms-flex: 100%;
+      flex: 45%;
+      max-width: 100%;
     }
+  }
 
     .icon_skills div {
       // padding: 0px 60px 0px 60px;
@@ -456,7 +358,6 @@ img {
     }
 
     .gallery_section {
-      // position: relative;
       max-width: 1920px;
       // height: 1305px;
       // top:-5px;
@@ -467,100 +368,114 @@ img {
     }
 
     /* Gallery BOX by ID */
-    #gallery {
-      // position: relative;
-      display: flex;
-      justify-content: center; //teksts iekš box ir centrēts horizontāli
-      align-items: center; //teksts iekš box ir centrēts vertikāli
 
-      max-width: 482px;
-      // height: 107px;
-      min-width: 200px;
-      // top: -200px;
-
-      @include section_box;
-
-      padding: 15px;
-      box-sizing: border-box;
-
-      margin: auto;
-
-      color: #000000;
+    .gallery_pict_container {
+      position: relative;
+      margin:auto;
     }
 
-    // .gallery__block {
-    //   display: grid;
-    //   grid-template-columns: 33.3% 33.3% 33.3%;
-    //   grid-template-rows: 1fr 1fr;
-    //   // grid-gap: 1.25em 3.5em;
-    //   min-height: 5rem;
-    //   width:100%;
-    //   border: 1px solid #353535;
-  	// }
+    #gallery {
+      @include section_box;
+        position: relative;
+        top: -100px;
+        // width: 100%;
+        margin: 0 auto;
+        // width: 300px;
+        // height: 50px;
+        color: white;
+        border: transparent;
+        
+    }
+
+    .gallery_section img {
+      max-width: 100%;
+    }
+
+    .gallery_tab {
+     max-width: 1920px;
+     background: #1D1D1D;
+     padding:50px;
+     text-align: center;
+    }
+
+    .gallery_tab button {
+      background-color: transparent;
+      border: transparent;
+      color: #FFFFFF;
+      padding: 0 40px;
+    }
+
+    .gallery_tab button:hover {
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    .gallery_block_private {
+      display: none;
+    }
 
     .gallery_row {
+      display: -ms-flexbox; /* IE10 */
       display: flex;
       flex-wrap: wrap;
-      // padding: 0 4px;
-      // border: 1px solid #353535;
+      -ms-flex-wrap: wrap; /* IE10 */
+      padding: 0 4px;
     }
     
-    /* Create two equal columns that sits next to each other */
+    /* Create equal columns that sits next to each other */
     .gallery_column {
-      flex: 100%;
-      // padding: 0 4px;
+      -ms-flex: 25%; /* IE10 */
+      flex: 25%;
+      max-width: 100%;
+      padding: 0 4px;
     }
     
     .gallery_column img {
-      // margin-top: 8px;
+      margin-top: 8px;
       vertical-align: middle;
+      width:100%;
     }
 
+/* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 800px) {
+    .gallery_column {
+      -ms-flex: 50%;
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .gallery_column {
+      -ms-flex: 100%;
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
 
   // Section Contact
   .contact_section {
-    // position: relative;
-    max-width: 1920px;
-    // height: 1178px;
-
     display: flex;
     flex-direction: column;
+    max-width: 1920px;
     background: radial-gradient(50% 50% at 50% 50%, rgba(26, 21, 21, 0) 0%, rgba(0, 0, 0, 0.16) 100%), #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
     margin: auto;
+    padding-bottom: 80px;
   }
 
 /* Contact BOX by ID */
-  #contact {
-    // position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    max-width: 404px;
-    // height: 107px;
-    // top: 142px;
-
-    @include section_box;
-
-    padding: 15px;
-    box-sizing: border-box;
-    
-    margin: auto;
-    color: #000000;
-
-  }
+#contact {
+  @include section_box;
+ }
 
 /* Contact input box */
   .contact__block {
-    // position: relative;
     display: flex;
-    // flex-wrap: wrap;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    // top: 302px;
 
   }
   
@@ -638,8 +553,8 @@ img {
 
   .footer_section { 
     display: flex;
-    justify-content: space-evenly; // saturs blokā
     flex-direction: column;
+    justify-content: space-between;
     text-align: center;
 
     font-style: normal;
@@ -651,6 +566,7 @@ img {
 
     max-width: 355px;
     height: 50%;
+    padding: 40px;
     // background:pink;
   }
 
@@ -659,13 +575,9 @@ img {
     text-decoration: none;
   }
 
-  // .icons_bottom {
-  //   background: #850c0c;
-  // }
-
   @media only screen and (max-width: 890px) {
     img {
-      width:85%;
+      // width:80%;
       -o-object-fit: cover;
          object-fit: cover;
       }
@@ -674,7 +586,7 @@ img {
       padding-top:20px;
     }
 
-    .owner__desc {
+    .owner_desc {
     padding-right: 5px;
     }
   
@@ -683,11 +595,11 @@ img {
     }
 
     h2 {
-      font-size: 20px;
+      font-size: 25px;
     }
 
     h3 {
-    font-size: 15px;
+    font-size: 20px;
   }
 
     h4 {
@@ -699,21 +611,76 @@ img {
   }
 }
 
-  @media only screen and (max-width: 684px) {
+  @media only screen and (max-width: 696px) {
     .navbar__lnk {
-      padding:15px;
+      padding:40px;
     }
     .navbar {
       padding-right:7px;
     }
   }
 
-@media only screen and (max-width: 684px) {
+@media only screen and (max-width: 670px) {
     .navbar__lnk {
-      padding:10px;
+      padding:20px;
     }
 
     .navbar__lnkcnt{
-    padding: 15px;
+    padding: 10px;
     }
+}
+@media only screen and (max-width: 620px) {
+  .navbar__lnk {
+    padding:8px;
+  }
+
+  .navbar__lnkcnt{
+  padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 94px) {
+  .menu > .toggle {
+    display: flex;
+    cursor: pointer;
+  }
+
+  .menu > .navbar {
+    display: none;
+  }
+
+  .menu > .toggle {
+    display: flex;
+    cursor: pointer;
+  }
+
+  .toggle::before {
+    content: url(hamburger.svg);
+    padding-right: 80px; // nestumjas toggle pa kreisi
+  }
+
+  .toggle.open::before {
+    content: url(cross.svg);
+  }
+
+  .menu > .navbar.open {
+    position: fixed;
+    top: 68px;
+    left: 0;
+    width: 150vw;
+    min-height: calc(100vh - 68px);
+    background: rgba(255, 255, 255, 0.801);
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+  }
+
+  .navbar__lnk {
+    color: #000000;
+  }
+
+  .menu .text {
+    display: initial;
+  }
 }

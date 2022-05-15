@@ -6,12 +6,10 @@
 
 <!-- Head Page -->
 <div class="header">
-    <!-- <div
-    class="toggle"
-    onclick="document.querySelector('.navbar').classList.toggle('open'); this.classList.toggle('open')">
-    </div> -->
     <div class="menu" id="top">  <!-- piešķir id, lai var navigēt uz šejieni no citurienes -->
     <!--  divs iekš diva, lai var nocentrēt un aiziet līdz malām, 19.04 lekcija_1 1:05-->
+        <div class="toggle" onclick="document.querySelector('.navbar').classList.toggle('open'); this.classList.toggle('open')">
+        </div>
         <div class="navbar">
             <a href="#aboutme" class="navbar__lnk" title="About Me">
                 <span class="text">About me</span>
@@ -51,61 +49,145 @@
         </div>
         <img src="Supojies.jpg" alt="Vineta" class="owner_pict">
     </div>
-
-<!--         
-        <div class="owner__desc">
-            <div class="owner__hi">Hi, I am</div>
-            <div class="owner__vineta">Vineta Vevere</div>
-            <div class="owner__pm">Project manager</div>
-            <div class="icon_top">
-                <a href="email">
-                    <svg width="38" viewBox="0 0 38 36">
-                        <use xlink:href="defs.svg#email"></use>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/vineta-vevere-21ba4536/" target="_blank">
-                    <svg width="39" viewBox="0 0 39 39" fill="none">
-                        <use xlink:href="defs.svg#in"></use>
-                    </svg>
-                </a>
-            </div>
-        </div>    -->
-        <!-- <div>
-            <img src="Supojies.jpg" alt="Vineta" class="owner__pict">
-        </div> -->
-    </div>
 </section>
 
 <!-- Section IT berries -->
-<section class="itberries">
+<section class="itberries_section">
     <h2>IT berries</h2>
     <h3> Do the best you can until you know better. Then when you know better, do better.” — Maya Angelou</h3>
 </section>
 
 <!-- Section About me -->
 <section class="aboutme_section">
-    <div id="aboutme"> <h3>ABOUT ME</h3></div>
-    <div class="aboutme_block"> 
-        <h1>Passioned to lead a team to realize struggling projects</h1>
-        <!-- <img src="seperator.svg" class="seperatorBalck" alt=""/> -->
-        <div class="acp_pmi_block">
-          <div>  
-            <div class="cert_block">
-                <h2>Certificates of PMI ACP and PMI PMP</h2>
-                <h3>Issued by:</h3>
+    <!-- <div>  -->
+        <div id="aboutme"> <h3>ABOUT ME</h3></div>
+    <!-- </div> -->
+            <div class="aboutme_block"> 
+                <h1>Passioned to lead a team to realize struggling projects</h1>
+                <!-- <img src="seperator.svg" class="seperatorBalck" alt=""/> -->
+                <div class="acp_pmi_block"> 
+                <div>  
+                    <div class="cert_block">
+                        <h2>Certificates of PMI ACP and PMI PMP</h2>
+                        <h3>Issued by:</h3>
+                        <img src="pmilogo.svg" class="icon__pmi" alt="" />
+                    </div>
+                        <img width="320" height="192" alt="" data-src="https://www.triveniit.com/wp-content/uploads/2016/04/agile-waterfall-960x576.png" class="attachment-twentyfourteen-full-width size-twentyfourteen-full-width wp-post-image lazyloaded" 
+                        src="https://www.triveniit.com/wp-content/uploads/2016/04/agile-waterfall-960x576.png"
+                        class="icon__agile">
+                   
+                </div>
             </div>
-            <img src="pmilogo.svg" class="icon__pmi" alt="" />
+    </div>
+
+
+    <div id="skills"><h3>SKILLS</h3></div>
+    <div class="skills_block">
+        <h3>USING NOW:</h3>
+            <div class="skills_row">
+                <div class="skills_column">
+                    <div>
+                        <svg width="85" viewBox="0 0 85 100" fill="none">
+                            <use xlink:href="defs.svg#icon_html"></use>
+                        </svg>
+                        <p>HTML5</p>
+                    </div>
+                    <div>
+                        <svg width="85" viewBox="0 0 85 100" fill="none">
+                            <use xlink:href="defs.svg#icon_css3"></use>
+                        </svg>
+                        <p>CSS3</p>
+                    </div>
+                </div>
+                <div class="skills_column">
+                    <div>
+                        <svg  width="128" viewBox="0 0 128 100"> 
+                            <use xlink:href="defs.svg#icon_saas"></use>
+                        </svg>
+                        <p>Saas</p>
+                    </div>   
+                    <div>
+                        <svg  width="97" viewBox="0 0 97 100"> 
+                            <use xlink:href="defs.svg#icon_js"></use>
+                        </svg>
+                        <p>JS</p>
+                    </div>
+                </div>
+                <div class="skills_column">
+                    <div>
+                        <svg  width="97" viewBox="0 0 97 100"> 
+                            <use xlink:href="defs.svg#icon_bootstrap"></use>
+                        </svg>
+                        <p>BOOT</p>
+                    </div>    
+                    <div>
+                        <svg  width="100" viewBox="0 0 256 256" preserveAspectRatio="xMinYMin meet">      
+                            <use xlink:href="defs.svg#icon_git"></use>
+                        </svg>
+                        <p>GIT</p>
+                    </div>   
+                </div>
+                <div class="skills_column">
+                    <div>
+                        <svg  width="103" viewBox="0 0 103 100"> 
+                            <use xlink:href="defs.svg#icon_mysql"></use>
+                        </svg>
+                        <p>MySQL</p>
+                    </div>
+                    <div>
+                        <svg width="180" viewBox="0 0 711.20123 383.5975" xml:space="preserve">
+                            <use xlink:href="defs.svg#icon_php"></use>
+                        </svg>
+                        <p>PHP</p>
+                    </div>
+                </div>
             </div>
-            
-            <img width="320" height="192" alt="" data-src="https://www.triveniit.com/wp-content/uploads/2016/04/agile-waterfall-960x576.png" class="attachment-twentyfourteen-full-width size-twentyfourteen-full-width wp-post-image lazyloaded" 
-            src="https://www.triveniit.com/wp-content/uploads/2016/04/agile-waterfall-960x576.png"
-            class="icon__agile">
         </div>
     </div>
 
-    <div id="skills"><h3>SKILLS</h3></div>
+    <div class="skills_block">
+        <h3>OTHER SKILLS:</h3>
+            <div class="skills_icon_lrblock">
+                <div class="skills_row">
+                    <div class="skills_column">
+                        <div>
+                            <svg width="85" viewBox="0 0 85 100" fill="none">
+                                <use xlink:href="defs.svg#icon_html"></use>
+                            </svg>
+                            <p>HTML5</p>
+                        </div>
+                    </div>  
+                    <div class="skills_column">  
+                        <div>
+                            <svg width="85" viewBox="0 0 85 100" fill="none">
+                                <use xlink:href="defs.svg#icon_css3"></use>
+                            </svg>
+                            <p>CSS3</p>
+                        </div>
+                    </div>
+                    <div class="skills_column">
+                        <div>
+                            <svg  width="103" viewBox="0 0 103 100"> 
+                                <use xlink:href="defs.svg#icon_mysql"></use>
+                            </svg>
+                            <p>MySQL</p>
+                        </div>
+                    </div> 
+                    <div class="skills_column">
+                        <div>
+                            <svg width="180" viewBox="0 0 711.20123 383.5975" xml:space="preserve">
+                                <use xlink:href="defs.svg#icon_php"></use>
+                            </svg>
+                            <p>MySQL</p>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+    </div>
+
+    <!-- <div id="skills"><h3>SKILLS</h3></div>
     <div class="skills_block"> 
-        <div class="skills_block_pm">
+        <div class="skills_block__pm">
             <h1>Project Management skills:</h1>
             <div class="icon_skills">
                 <div>
@@ -116,7 +198,7 @@
         </div>
     </div>    
    
-        <div class="skills_block_it">
+        <div class="skills_block__it">
             <h1>IT skills:</h1>
             <div class="icon_skills">
                 <div>
@@ -178,26 +260,66 @@
             </div>   
         </div> 
     </div>
-</section>
+</section> -->
 
 <!-- Section Gallery -->
+
 <section class="gallery_section">
-    <img src="toppicture.png" alt="top_picture">
-    <div id="gallery"><h3>GALLERY</h3></div>
-    <div class="gallery_block">
+    <div class="gallery_pict_container">
+        <img src="toppicture.png" alt="top_picture" class="responsive">
+        <div id="gallery"><h3>GALLERY</h3>
+        </div>
+    </div>
+    <div class="gallery_tab">
+        <button id="Work"><h3>WORK</h3></button>
+        <button id="Private"><h3>PRIVATE</h3></button>
+    </div>
+    
+    <div class="gallery_block_work">
         <div class="gallery_row">
             <div class="gallery_column">
                 <img src="ei.png">
                 <img src="test-automation.png">
-                <img src="science.png">
             </div>
             <div class="gallery_column">
                 <img src="training.png">
+                <img src="science.png">
+            </div> 
+            <div class="gallery_column">
                 <img src="play.png">
                 <img src="PietOudolf_Garten.png">
             </div> 
         </div>
-    </div>  
+    </div>
+
+    <div class="gallery_block_private">
+        <div class="gallery_row">
+            <div class="gallery_column">
+                <a
+                href="https://unsplash.com/photos/QvjL4y7SF9k"
+                target="_blank"
+                class="image"
+            >
+                <img
+                src="https://images.unsplash.com/photo-1566146991569-696da38bb775?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                alt="meadow"
+                />
+            </div>
+            <div class="gallery_column">
+                <a
+                href="https://unsplash.com/photos/vkQgb1lZZPQ"
+                target="_blank"
+                class="image"
+            >
+                <img
+                src="https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+                alt="meadow"
+                />
+            </div> 
+        </div>        
+    </div>
+
+
 </section>
 
 <!-- Section Contact -->
@@ -283,4 +405,6 @@
     </div>
 
 </footer>
+
+<script src="script.js"></script>
 
