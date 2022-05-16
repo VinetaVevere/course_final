@@ -382,9 +382,6 @@ img {
         margin: 0 auto;
         // width: 300px;
         // height: 50px;
-        color: white;
-        border: transparent;
-        
     }
 
     .gallery_section img {
@@ -479,7 +476,7 @@ img {
 
   }
   
-  .contact__block input /*[type="name"]*/ {
+  .contact__block input, textarea /*[type="name"]*/ {
     width: 300px;
     height: 50px;
 
@@ -527,16 +524,24 @@ img {
     margin: 30px auto 0px auto;
   }
   
-  #submit a {
+  #submit {
     color: #000000;
-    text-decoration: none;
+    // text-decoration: none;
+    background: transparent;
+    cursor: pointer;
   }
   
-  #submit a:hover {
+  #submit:hover {
     opacity: 0.7;
   }
 
   // Footer section
+
+
+  // comments__entry template
+  .template {
+    display:none; //sākumā klase tiks pazaudēta
+}
 
   footer {
     display: flex;
@@ -554,7 +559,6 @@ img {
   .footer_section { 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     text-align: center;
 
     font-style: normal;
@@ -574,6 +578,10 @@ img {
     color: #FFFFFF;
     text-decoration: none;
   }
+
+  // .icons_bottom {
+  //   background: #850c0c;
+  // }
 
   @media only screen and (max-width: 890px) {
     img {
@@ -654,6 +662,8 @@ img {
     cursor: pointer;
   }
 
+  /*::before creates a pseudo-element that is the first child of the selected element. It is often used to add cosmetic content to an element with the content property. It is inline by default.
+  Add a heart before links  a::before {content: "♥"; }*/ 
   .toggle::before {
     content: url(hamburger.svg);
     padding-right: 80px; // nestumjas toggle pa kreisi

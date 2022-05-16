@@ -1,2 +1,1 @@
-*.css
-*css.map
+git rm style.css style.css.map 
