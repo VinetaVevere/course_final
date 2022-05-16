@@ -16,6 +16,11 @@ document.getElementById('Work').onclick = function () {
 
   }
 
+// Skripts, lai apskatītu pieprasījumus
+    xhttp.get('api.php?author=Vineta', function (response) { // šeit taisām pieprasījumu uz get api
+    console.log(response.message);
+});
+
 // Skripti Comments iesniegšanai
 
 // Pārtvert notikumu uz formu. Piemēram sākumā izvadīt kaut ko consolē, kad submito formu.
@@ -30,6 +35,7 @@ form.onsubmit = function (event) {
     // tālāk jāievāc formas dati, varam dabūt visas formas datus vienā rāvienā. Jāpadod pati forma - FormData(this). this būs tā pati forma
     const data = new FormData(this); //tas, kas adrešu joslā
     addComment(data.get('author'), data.get('email'), data.get('phone'), data.get('message'));
+
 };
 
 function addComment(author, email, phone, message) { //Izvadīt. Lai pievienotu vajadzēs id, bet pagaidām varam messagi un autoru)
@@ -47,8 +53,6 @@ function addComment(author, email, phone, message) { //Izvadīt. Lai pievienotu 
 
     comment_block.append(new_comment) //komentāru blokā ar append pievienosim new_comment.
 }
-
-
 
 
   /**

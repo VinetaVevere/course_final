@@ -644,6 +644,10 @@ button:focus {
   opacity: 0.7;
 }
 
+.template {
+  display: none;
+}
+
 footer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -754,6 +758,8 @@ footer * {
     display: flex;
     cursor: pointer;
   }
+  /*::before creates a pseudo-element that is the first child of the selected element. It is often used to add cosmetic content to an element with the content property. It is inline by default.
+  Add a heart before links  a::before {content: "♥"; }*/
   .toggle::before {
     content: url(hamburger.svg);
     padding-right: 80px;
