@@ -665,12 +665,12 @@ img {
   /*::before creates a pseudo-element that is the first child of the selected element. It is often used to add cosmetic content to an element with the content property. It is inline by default.
   Add a heart before links  a::before {content: "♥"; }*/ 
   .toggle::before {
-    content: url(hamburger.svg);
+    content: url(images/hamburger.svg);
     padding-right: 80px; // nestumjas toggle pa kreisi
   }
 
   .toggle.open::before {
-    content: url(cross.svg);
+    content: url(images/cross.svg);
   }
 
   .menu > .navbar.open {

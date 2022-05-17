@@ -47,7 +47,7 @@
                 </a>
             </div>
         </div>
-        <img src="Supojies.jpg" alt="Vineta" class="owner_pict">
+        <img src="images/Supojies.jpg" alt="Vineta" class="owner_pict">
     </div>
 </section>
 
@@ -64,13 +64,13 @@
     <!-- </div> -->
             <div class="aboutme_block"> 
                 <h1>Passioned to lead a team to realize struggling projects</h1>
-                <!-- <img src="seperator.svg" class="seperatorBalck" alt=""/> -->
+                <!-- <img src="image/seperator.svg" class="seperatorBalck" alt=""/> -->
                 <div class="acp_pmi_block"> 
                 <div>  
                     <div class="cert_block">
                         <h2>Certificates of PMI ACP and PMI PMP</h2>
                         <h3>Issued by:</h3>
-                        <img src="pmilogo.svg" class="icon__pmi" alt="" />
+                        <img src="images/pmilogo.svg" class="icon__pmi" alt="" />
                     </div>
                         <img width="320" height="192" alt="" data-src="https://www.triveniit.com/wp-content/uploads/2016/04/agile-waterfall-960x576.png" class="attachment-twentyfourteen-full-width size-twentyfourteen-full-width wp-post-image lazyloaded" 
                         src="https://www.triveniit.com/wp-content/uploads/2016/04/agile-waterfall-960x576.png"
@@ -191,7 +191,7 @@
 <!-- Section Gallery -->
 <section class="gallery_section">
     <div class="gallery_container">
-        <img src="toppicture.png" alt="top_picture" class="responsive">
+        <img src="images/toppicture.png" alt="top_picture" class="responsive">
         <div id="gallery"><h3>GALLERY</h3></div>
     </div>
 
@@ -203,16 +203,16 @@
     <div class="gallery_block_work">
         <div class="gallery_row">
             <div class="gallery_column">
-                <img src="ei.png">
-                <img src="test-automation.png">
+                <img src="images/ei.png">
+                <img src="images/test-automation.png">
             </div>
             <div class="gallery_column">
-                <img src="training.png">
-                <img src="science.png">
+                <img src="images/training.png">
+                <img src="images/science.png">
             </div> 
             <div class="gallery_column">
-                <img src="play.png">
-                <img src="PietOudolf_Garten.png">
+                <img src="images/play.png">
+                <img src="images/PietOudolf_Garten.png">
             </div> 
         </div>
     </div>
@@ -251,29 +251,36 @@
     <div class="contact__block">
         <form action="" id="comments_form">
             <div>
-                <input type="name" name="author" id="author_name" placeholder="enter your name*"/>
+                <input type="name" name="author" id="author_name" placeholder="enter your name*" required>
             </div>
-
             <div>
-                <input type="email" name="email" id="client_email" placeholder="enter your email*"/>
+                <input type="email" name="email" id="client_email" placeholder="enter your email*" required>
             </div>
-
             <div>
-                <input type="phone" name="phone" id="client_phone" placeholder="phone number"/>
+                <input type="phone" name="phone" id="client_phone" placeholder="phone number">
             </div>
-
             <div>
-                <textarea type="message" name="message" id="client_message" placeholder="your message*"></textarea>
+                <textarea name="message" rows="10" placeholder="Your Message" required></textarea>
             </div>
+            <div>
                 <button type="submit" id="submit">Submit</button>
-            <div>
+            </div>
         </form>
         
         <!-- elements, kurā izvadīsies visi komentāri. Tā ir cita pieeja nekā ar Document.createElement()-->
         <div class="comments">
-            <!-- izveidosim sagatavi, iedosim strukūru kā komentārs izskatīsies. Varam piešķirt atribūtus -->
-            <div class="comments__entry template"> 
-                <p class="message"></p>  <!--  te ievietos komentāru-->
+
+        <!-- tālāk izveidosim sagatavi, iedosim strukūru kā komentārs izskatīsies. Varam piešķirt atribūtus.--> 
+        <!-- Template katru reizi kopējas. Javascrips kopēs klasi template un ievietos atkārtoti jau bez klases template -->
+        <!-- Sākumā .template <display:none; Katru reizi taisot clone (scrip.js const new_comment = comment_template.cloneNode(true);) nokopēsies div elements --> 
+            <div class="comments__entry template">  
+                <!--  te ievietos autoru-->
+                <strong class="author"></strong>
+                <p class="email"></p>
+                <p class="phone"></p>
+                <!--te ievietos komentāru-->
+                <p class="message"></p>  
+                 
             </div>
         </div>
         

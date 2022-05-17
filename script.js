@@ -17,43 +17,69 @@ document.getElementById('Work').onclick = function () {
   }
 
 // Skripts, lai apskatītu pieprasījumus
-    xhttp.get('api.php?author=Vineta', function (response) { // šeit taisām pieprasījumu uz get api
-    console.log(response.message);
-});
+// šeit taisām pieprasījumu uz get api
+    // xhttp.get('api.php?author=Vineta', function (response) { 
+    // console.log(response.message);
+    // console.log("api.php?author"); //Izvada Vineta
+// });
+
 
 // Skripti Comments iesniegšanai
 
 // Pārtvert notikumu uz formu. Piemēram sākumā izvadīt kaut ko consolē, kad submito formu.
-const form = document.getElementById('comments_form'); //vispirms atlasām to formu. Index.html -->  <form action="" id="comments_form">. piešķiram mainīgajam
+const form = document.getElementById('comments_form'); ////nodefinēts formas mainīgais. Vispirms atlasām to formu. Kas radīta Index.html -->  <form action="" id="comments_form">. piešķiram mainīgajam
+const comment_block = document.querySelector('.comments'); // nodefinēts comment_block mainīgais. Saturēs to elementu, kurā tika ievietoti komentāri
+const comment_template = comment_block.querySelector('.template'); //nodefinēts komentāru template mainīgais. komentāru template izmantosim, lai ievietotu jaunu saturu
 
-const comment_block = document.querySelector('.comments'); //comment_block saturēs to elementu, kurā tika ievietoti komentāri
-const comment_template = comment_block.querySelector('.template'); //komentāru template izmantosim, lai ievietotu jaunu saturu
+form.onsubmit = function (event) { //Kad forma submitota
 
+    /** izpildās javascripts, kas pārtver submita noklusējuma darbību */
+    event.preventDefault(); 
 
-form.onsubmit = function (event) {
-    event.preventDefault();
-    // tālāk jāievāc formas dati, varam dabūt visas formas datus vienā rāvienā. Jāpadod pati forma - FormData(this). this būs tā pati forma
-    const data = new FormData(this); //tas, kas adrešu joslā
-    addComment(data.get('author'), data.get('email'), data.get('phone'), data.get('message'));
+    /** Var izmantot xhttp objektu un šim objektam bija metode postForm, uz kuru padosies forma un callback funkcija/metode, kas izpildīsies (xhttps.js)*/
+    /** this šajā kontekstā ir pati forma. Komentāra pievienošana, kad ir dabūta atbilde */
 
+    xhttp.postForm(this, function (response) { 
+      const data = new FormData(form);
+      addComment(data.get('author'), data.get('email'), data.get('phone'), data.get('message'));
+    });
+
+    /** Vienkāršais alternatīvais variants, kas vairs nav vajadzīgs
+     * 
+    /** Jāievāc formas dati, varam dabūt visas formas datus vienā rāvienā. Jāpadod pati forma - FormData(this). this būs tā pati forma*/
+    /** atrodam visus datus no formas. tie, kas adrešu joslā
+    * const data = new FormData(this); 
+
+    /** Izpildam addComment medoti, uz kuru padodam autoru,.. un messagi. Input lauki name.
+    * addComment(data.get('author'), data.get('email'), data.get('phone'), data.get('message'));*/
 };
 
-function addComment(author, email, phone, message) { //Izvadīt. Lai pievienotu vajadzēs id, bet pagaidām varam messagi un autoru)
+function addComment(author, email, phone, message) { //Izvadīt. Uz addComment medoti padodas 4 vērtības. Lai pievienotu vajadzēs id)
   console.log(author, email, phone, message);  
 
   /**
    * Iekš šīs funkcijas tiks izveidots new_comment, kurš tiks paņemts no komentāru template - const comment_template 
-   * Ja pirms tam veidojām elementu ar Document.createElement(), tad piešķīrām atribūtus, iekš viņa vajadzēja atsevišķus elementus. citu veidot. 
+   * Ja pirms tam veidojām elementu ar Document.createElement(), tad piešķīrām atribūtus, iekš viņa vajadzēja atsevišķus elementus. 
    * Tad šobrīd ejam citu ceļu -  sākumā sagatavojam template. index. html failā varam mainīt html, paši pievienot atribūtus
    * nodublējam elementu, uztaisām kopiju. Jāpadod true, lai nokopējas ne tikai pats elements, bet arī viss viņa iekšējais saturs. Mums ir div elements, arī lai p tags tiktu nokopēts
    */
-  const new_comment = comment_template.cloneNode(true); //Izveidojam kopiju un ierakstām iekš new_comment
-    new_comment.classList.remove('template'); // Lai būtu redzams!!! Jaunajam komentāram vajag noņemt klasi, jo viņš nokoppējās un arī parādījās klases template. 
-    new_comment.querySelector('.message').textContent = message; //Iekš new_comment.querySelector('.message') Varam pievienot tekstu
 
-    comment_block.append(new_comment) //komentāru blokā ar append pievienosim new_comment.
+  /** Izveidojam jaunā komentāra objektu new_comment. Izveidojam kopiju un ierakstām iekš new_comment. Noklonējot sagatavoto template. The cloneNode() method creates a copy of a node, and returns the clone.*/
+   const new_comment = comment_template.cloneNode(true);
+   
+   /** Lai būtu redzams!!! Jaunajam komentāram vajag noņemt klasi (jo klasei bija stils, ka nav redzams), jo viņš nokopējās un arī parādījās klases template.*/
+   new_comment.classList.remove('template'); 
+   
+    /** Iekš new_comment.querySelector('.message') Varam pievienot tekstu. */
+    new_comment.querySelector('.author').textContent = author;
+    /** tajā div elementā (<div class="comments__entry" - bez template!!), atrodam elementu ar klasi message un pievienojam kā tekstu šo te ziņu (message) */
+    new_comment.querySelector('.message').textContent = message; 
+    new_comment.querySelector('.email').textContent = email;
+    new_comment.querySelector('.phone').textContent = phone;
+
+     /** komentāru blokā ar append pievienosim new_comment */
+    comment_block.append(new_comment)
 }
-
 
   /**
    * Strādā:
