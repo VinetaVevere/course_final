@@ -36,15 +36,17 @@ form.onsubmit = function (event) { //Kad forma submitota
     /** izpildās javascripts, kas pārtver submita noklusējuma darbību */
     event.preventDefault(); 
 
-    /** Var izmantot xhttp objektu un šim objektam bija metode postForm, uz kuru padosies forma un callback funkcija/metode, kas izpildīsies (xhttps.js)*/
-    /** this šajā kontekstā ir pati forma. Komentāra pievienošana, kad ir dabūta atbilde */
-
+    /** Var izmantot xhttp objektu un šim objektam bija metode postForm, uz kuru padosies forma un callback funkcija/metode, kas izpildīsies (xhttps.js)
+    * this šajā kontekstā ir pati forma. Komentāra pievienošana, kad ir dabūta atbilde
+    * Lai funkcija function (response) {} izpildītos, šajā atbildē - responsā, ir jābūt statuss "true" 
+      Atbildē sagaidīsim tos pašus datus, ko nosūtījām. Iespējams, ka atbildē dati būs nedaudz formatēti. Servera pusē pārveidoti, piemēram, noņemtas liekās atstarpes.*/
     xhttp.postForm(this, function (response) { 
-      const data = new FormData(form);
-      addComment(data.get('author'), data.get('email'), data.get('phone'), data.get('message'));
+
+      /** šeit jau atbildes datus varam izmantot*/
+      addComment(response.author, response.email, response.phone, response.message);
     });
 
-    /** Vienkāršais alternatīvais variants, kas vairs nav vajadzīgs
+    /** Vienkāršais alternatīvais variants, kad ņēmām datus no formas nevis jau no responsa. Nav aktuāls, bet viegli saprast
      * 
     /** Jāievāc formas dati, varam dabūt visas formas datus vienā rāvienā. Jāpadod pati forma - FormData(this). this būs tā pati forma*/
     /** atrodam visus datus no formas. tie, kas adrešu joslā
@@ -54,13 +56,13 @@ form.onsubmit = function (event) { //Kad forma submitota
     * addComment(data.get('author'), data.get('email'), data.get('phone'), data.get('message'));*/
 };
 
-function addComment(author, email, phone, message) { //Izvadīt. Uz addComment medoti padodas 4 vērtības. Lai pievienotu vajadzēs id)
-  console.log(author, email, phone, message);  
-
+/** Izvadīt. Uz addComment metodi padodas 4 vērtības. Lai pievienotu, vajadzēs id)*/
+function addComment(author, email, phone, message) { 
+  console.log(author, email, phone, message);
   /**
    * Iekš šīs funkcijas tiks izveidots new_comment, kurš tiks paņemts no komentāru template - const comment_template 
-   * Ja pirms tam veidojām elementu ar Document.createElement(), tad piešķīrām atribūtus, iekš viņa vajadzēja atsevišķus elementus. 
-   * Tad šobrīd ejam citu ceļu -  sākumā sagatavojam template. index. html failā varam mainīt html, paši pievienot atribūtus
+   * Ja pirms tam veidojām elementu ar Document.createElement(), tad piešķīrām atribūtus, iekš viņa vajadzēja atsevišķus elementus....
+   * Tad šobrīd ejam citu ceļu -  sākumā sagatavojam template. index.html failā varam mainīt html, paši pievienot atribūtus
    * nodublējam elementu, uztaisām kopiju. Jāpadod true, lai nokopējas ne tikai pats elements, bet arī viss viņa iekšējais saturs. Mums ir div elements, arī lai p tags tiktu nokopēts
    */
 

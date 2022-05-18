@@ -25,31 +25,40 @@ const xhttp = {
         this.post(url, data, callback); 
 
         /** Izmantojot jebkad šo funkciju (arī citur piemērojot), svarīgi, lai forma resetojas. Lai pazūd ieraksti esošajā formā
-        *   padots form elements, tāpēc formu resetojam. */
+        * Kad notiek pieprasījums uz šo funkciju function (form, callback = false) {}, forma resetoja.   
+        * padots form elements, tāpēc formu resetojam. */
         form.reset(); 
     },
 
 /**
  * Mums būs post: funkcija arī tāda, kur varam paši padot url, data 
  * šeit parastā post metode. Tīri, kas nav saistīta ar formu.
- * post metodei vajadzēs datus, ko sūtīt. Tā ir atšķirība no get metodes.
- * uz šo metodi jāpado 3 vērtības url, data, callback)
+ * post metodei vajadzēs DATUS, ko sūtīt. Tā ir atšķirība no get metodes.
+ * uz šo metodi jāpado 3 vērtības url, data, callback.
  */
 
 //Post
-    post: function (url, data, callback = false) { //jāzina, protams, url, kur sūtīt. Tad callback - funkcijas.
-        const xhttp = new XMLHttpRequest(); // Iepriekš bija iznests ārā !!!!!!!!!!!!! uz augšu.
+    post: function (url, data, callback = false) { //jāzina, protams, url, kur sūtīt. Tad callback - funkcija.
+        const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
             if (callback !== false) {
-                let response_object = JSON.parse(this.responseText);
+
+                /**parse: json saturs tiek pārsvērsts uz javascript formātu. Ja this.responseText nav Json formātā, tad kļūda, jo mēģinām ne jsonu pārveidot uz JS formātu*/
+                let response_object = JSON.parse(this.responseText); //16.05 lekcijā bija atbilde
+                
+                /** Rinda, kas pārbauda to, kas ir atbildē. Ja ir klāt statuss */
                 if (response_object.status == true) {
-                    callback(response_object);  
+
+                /** Tad izpildām callback metodi. Un scrip.js failā ir nodefinēta callback metode*/
+                     callback(response_object);
                 }
             }
         };
-        xhttp.open("POST", url); //Specifies the type of request. open (method, url, async). method: the type of request: GET or POST
+        /**Specifies the type of request. open (method, url, async). method: the type of request: GET or POST*/
+        xhttp.open("POST", url);
     
-        xhttp.send(data); //Sends the request to the server (used for POST)
+        /** Sends the request to the server (used for POST)*/
+        xhttp.send(data); 
     },
 
 //GET
@@ -62,7 +71,7 @@ const xhttp = {
         xhttp.onload = function() {
             if (callback !== false) {
                 try {
-                    let response_object = JSON.parse(this.responseText);
+                    let response_object = JSON.parse(this.responseText); //tiek parsots jsons
 
                     if (response_object.status == true) {
 
