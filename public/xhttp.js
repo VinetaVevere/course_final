@@ -68,10 +68,13 @@ const xhttp = {
     get: function (url, callback = false) { 
         //Objekts XMLHttpRequest tiek izmantots datu apmaiņai ar serveri.
         const xhttp = new XMLHttpRequest(); //Visās mūsdienu pārlūkprogrammās ir iebūvēts XMLHttpRequest objekts, lai pieprasītu datus no servera.
+      
+        //XMLHttpRequest onload definē funkciju, kas jāizsauc, kad pieprasījums tiek saņemts (ielādēts)
         xhttp.onload = function() {
             if (callback !== false) {
                 try {
-                    let response_object = JSON.parse(this.responseText); //tiek parsots jsons
+                    //tiek parsots jsons
+                    let response_object = JSON.parse(this.responseText); 
 
                     if (response_object.status == true) {
 

@@ -31,6 +31,20 @@ const form = document.getElementById('comments_form'); ////nodefinēts formas ma
 const comment_block = document.querySelector('.comments'); // nodefinēts comment_block mainīgais. Saturēs to elementu, kurā tika ievietoti komentāri
 const comment_template = comment_block.querySelector('.template'); //nodefinēts komentāru template mainīgais. komentāru template izmantosim, lai ievietotu jaunu saturu
 
+//Uz get metodi padodam url un callback. Notiek pieprasījums uz šo te adresi: api.php?name=get-comments. Un ar function (response) dabūjam atbildi.
+//Response vajadzētu saturēt datus no db.php funkcijas getAll(), bet ierakstītus iekš 'comments' no api.php ('comments' => $db->getAll)
+xhttp.get('api.php?name=get-comments', function (response) {
+  
+   console.log(response); 
+   
+  //Izlaist cauri addComment darbību. Ejam cauri masīvam response.comments. Katru reizi jauns ieraksts būs mainīgajā comment.
+  //for (let comment of response.comments) {
+  //varam izsaukt funkciju addComment
+    //addComment(comment.author, comment.email, comment.phone, comment.message);
+
+   
+  });
+
 form.onsubmit = function (event) { //Kad forma submitota
 
     /** izpildās javascripts, kas pārtver submita noklusējuma darbību */
@@ -58,7 +72,7 @@ form.onsubmit = function (event) { //Kad forma submitota
 
 /** Izvadīt. Uz addComment metodi padodas 4 vērtības. Lai pievienotu, vajadzēs id)*/
 function addComment(author, email, phone, message) { 
-  console.log(author, email, phone, message);
+  // console.log(author, email, phone, message, message);
   /**
    * Iekš šīs funkcijas tiks izveidots new_comment, kurš tiks paņemts no komentāru template - const comment_template 
    * Ja pirms tam veidojām elementu ar Document.createElement(), tad piešķīrām atribūtus, iekš viņa vajadzēja atsevišķus elementus....
