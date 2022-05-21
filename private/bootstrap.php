@@ -1,20 +1,28 @@
 <?php
 
+//bottstrop fails ir pirmais fails no php, kurš ielādējas
 //Atkļūdošanas režīms. izvērstā veidā
+define('DEBUG_MODE', true);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// define('DB_SERVER_NAME', 'localhost');
-// define('DB_NAME', 'bootcamp31');
-// define('DB_USERNAME', 'root');
-// define('DB_PASSWORD', 'root');
+define('DB_SERVER_NAME', 'localhost');
+define('DB_NAME', 'contacts'); //DB nosaukums
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', 'root');
+
+if (DEBUG_MODE) {
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+}
 
 //echo "test";
 
-//Izsaucot, tiks mēģināts jebkuru klasi includot. Automātiski caur require includos failus, kad mēģinās piekļūt kādai klasei. Ņemot vērā klases nosaukumu. 
+// Izsaucot, tiks mēģināts jebkuru klasi includot. Automātiski caur require includos failus, kad mēģinās piekļūt kādai klasei. Ņemot vērā klases nosaukumu. 
 // vispār mēs lādēsim klāt failus, pieliekot klases vārdu
-//iekš tekošās mapes - privat, meklējam mapi classes
+// iekš tekošās mapes - privat, meklējam mapi classes
 // ņemot vērā klases nosaukumu $class un tad pieliekam klāt ceļu un noteikto klasi. 
 spl_autoload_register(function ($class) {
     //Tiks aizvietoti noteiktie simboli. Tiks noteikts pilnais ceļš uz failu.

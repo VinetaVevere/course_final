@@ -4,8 +4,6 @@
 // caur šejieni pielādēs class DB, kur boostrap.php ir spl_autoload_register, kas mēģinās šo klasi includot, ja klase vēl nav pieejama
 include __DIR__ . '/../private/bootstrap.php'; 
 
-// echo include __DIR__ . '/../private/bootstrap.php';
-
 use Storage\DB; //Variants ar as (piemēram, use Storage\DB as DataBase ir, kad lielāks projekts). Visbiežāk izmantotie nosaukumi sāk jau aizpildīties.
 
 // Header, kas noteikts, ka saturs, ko atgriezīs šis pieprasījums uz šo failu, būs json formātā. tips application/json 
@@ -17,14 +15,14 @@ if (isset($_GET['name']) && is_string($_GET['name'])) {
     //Vispirms pārbauda $_GET[] masīvā, vai ir īstais api? Vai name ir  vienāds ar api, kas mūs interesē. No index.html faila :  <form action="api.php?name=add-comment" id="comments_form">
     if ($_GET['name'] === 'add-comment') {
          if (    
-            // Api pusē pārbaudām, vai tika padoti īstie dati.Izmantojam POS metodi.
+            // Api pusē pārbaudām, vai tika padoti īstie dati. Izmantojam POS metodi.
             isset($_POST['author']) && is_string($_POST['author']) &&
             isset($_POST['email']) && is_string($_POST['email']) &&
             isset($_POST['phone']) && is_string($_POST['phone']) &&
             isset($_POST['message']) && is_string($_POST['message'])
          ) {
             // Tikai šādi pierakstot bootstraps nezina, no kuras mapes tp DB dabūt ārā. Tāpēc augšā jāraksta use Storage\DB; Izmantojam to DB, kas iekš Storage
-            $db = new DB(); 
+            $db = new DB('contacts');
             // šajā vietā izvadām
             $output = [
                 'status' => true,
@@ -35,7 +33,9 @@ if (isset($_GET['name']) && is_string($_GET['name'])) {
                 // Pēdējam komata nav, ja aiz tā nekas neseko!!!  
                 'message' => $_POST['message'], 
                 //kaut kāds test, db izsaucam metodi addEntry(), uz viņu padodod visu masīvu test' => $db->addEntry($_POST). Drošāk pa vienam.
-                'test' => $db->addEntry([ 
+                //šeit varam atgriezt id. Id datu bāzes pusē izveidots. Lai addEntry atgriež atpakaļ id. Mēs uz padodam  masīvu ar autoru, e-pastu, telefona Nr un ziņu.
+                'id' => $db->addEntry([ 
+                    //'author' (atslēga) => $_POST['author'] (vērtība),
                     'author' => $_POST['author'],
                     'email' => $_POST['email'],
                     'phone' => $_POST['phone'],
@@ -45,9 +45,9 @@ if (isset($_GET['name']) && is_string($_GET['name'])) {
         }
     }   
     // vajag tikai piekļūt datu bāzei un izvadīt. get-comments 
-    // taisot pieprasījumu ar javascript uz šo adresi: $_GET['name'] === 'get-comments', tiks izpildīta metode getAll() un metode pagaidāma atgriež masīvu ar vārdu test (DB.php return ['test'];)
+    // taisot pieprasījumu ar javascript uz šo adresi: $_GET['name'] === 'get-comments', tiks izpildīta metode getAll() un metode pagaidām atgriež masīvu ar vārdu test (DB.php return ['test'];)
     elseif ($_GET['name'] === 'get-comments') {
-        $db = new DB(); // Izveidots DB
+        $db = new DB('contacts'); // Izveidots DB. 
         $output = [
             'status' => true,
             'comments' => $db->getAll() // getAll būs mūsu metode

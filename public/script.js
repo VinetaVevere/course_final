@@ -33,17 +33,16 @@ const comment_template = comment_block.querySelector('.template'); //nodefinēts
 
 //Uz get metodi padodam url un callback. Notiek pieprasījums uz šo te adresi: api.php?name=get-comments. Un ar function (response) dabūjam atbildi.
 //Response vajadzētu saturēt datus no db.php funkcijas getAll(), bet ierakstītus iekš 'comments' no api.php ('comments' => $db->getAll)
+//metode izpildās lapai pārlādējoties
 xhttp.get('api.php?name=get-comments', function (response) {
-  
    console.log(response); 
-   
-  //Izlaist cauri addComment darbību. Ejam cauri masīvam response.comments. Katru reizi jauns ieraksts būs mainīgajā comment.
-  //for (let comment of response.comments) {
-  //varam izsaukt funkciju addComment
-    //addComment(comment.author, comment.email, comment.phone, comment.message);
 
-   
-  });
+  //Izlaist cauri addComment darbību. Ejam cauri masīvam response.comments. Katru reizi jauns ieraksts būs mainīgajā comment.
+  for (let comment of response.comments) {
+  //varam izsaukt funkciju addComment
+    addComment(comment.author, comment.email, comment.phone, comment.message);
+  }
+})
 
 form.onsubmit = function (event) { //Kad forma submitota
 

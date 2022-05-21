@@ -535,14 +535,53 @@ img {
     opacity: 0.7;
   }
 
-  // Footer section
-
+  //Contact administration form
 
   // comments__entry template
   .template {
     display:none; //sākumā klase tiks pazaudēta
 }
 
+#comments_form {
+  margin-top:50px;
+  textarea {
+      resize: vertical;
+  }
+}
+
+.comment_first_block {
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:2rem;
+
+  .message {
+      margin:0;
+      white-space: pre;
+  }
+}
+
+.comments {
+  margin:auto;
+  max-width:25rem;
+  padding:1rem;
+}
+
+.comments__entry {
+  border-bottom: 1px solid rgb(100, 87, 126);
+  padding: 0.25rem;
+
+  .author {
+      display:block;
+      text-align:right;
+  }
+}
+
+.comments__entry:last-child {
+  border:0;
+}
+
+
+  // Footer section
   footer {
     display: flex;
     justify-content: center; // iekšējā bloka izvietojums pa vidu footerim

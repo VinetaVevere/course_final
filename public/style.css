@@ -648,6 +648,49 @@ button:focus {
   display: none;
 }
 
+#comments_form {
+  margin-top: 50px;
+}
+
+#comments_form textarea {
+  resize: vertical;
+}
+
+.comment_first_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.comment_first_block .message {
+  margin: 0;
+  white-space: pre;
+}
+
+.comments {
+  margin: auto;
+  max-width: 25rem;
+  padding: 1rem;
+}
+
+.comments__entry {
+  border-bottom: 1px solid #64577e;
+  padding: 0.25rem;
+}
+
+.comments__entry .author {
+  display: block;
+  text-align: right;
+}
+
+.comments__entry:last-child {
+  border: 0;
+}
+
 footer {
   display: -webkit-box;
   display: -ms-flexbox;
