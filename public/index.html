@@ -274,20 +274,29 @@
         <!-- tālāk izveidosim sagatavi, iedosim strukūru kā komentārs izskatīsies. Varam piešķirt atribūtus.--> 
         <!-- Template katru reizi kopējas. Javascrips kopēs klasi template un ievietos atkārtoti jau bez klases template -->
         <!-- Sākumā .template <display:none; Katru reizi taisot clone (scrip.js const new_comment = comment_template.cloneNode(true);) nokopēsies div elements --> 
-            <div class="comments__entry template">  
-                <!--  te ievietos autoru-->
-                <strong class="author"></strong>
-                <p class="email"></p>
-                <p class="phone"></p>
-                <!--te ievietos komentāru-->
-                <p class="message"></p> 
+            <div class="comments__entry template"> 
+                <!-- <div class="comment_first_block">  -->
+                    <p class="email"></p>
+                    <p class="phone"></p>
+                    <!--te ievietos komentāru-->
+                    <p class="message"></p> 
                 <div>
                     <a href="#" class="delete">delete</a>
                     <a href="#" class="edit">edit</a>
-                </div>   
+                <!-- </div>    -->
+                <!--  te ievietos autoru-->
+                <strong class="author"></strong>
             </div>
-        </div>
+        </div>  
         
+        <!-- <div class="popup">
+            <form action="api.php?name=update-comment" id="comments_update_form">
+                <input type="hidden" name="id">
+                <input type="text" name="author" placeholder="Name" required>
+                <textarea name="message" rows="10" placeholder="Comment Message" required></textarea>
+                <button type="submit">save</button>
+            </form>
+        </div> -->
     </div>
     <!-- <form id="submit" method="post" action="mailto://vineta.vevere@gmail.com">
             <a

@@ -549,16 +549,24 @@ img {
   }
 }
 
-.comment_first_block {
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:2rem;
 
-  .message {
-      margin:0;
-      white-space: pre;
-  }
+.message {
+  margin:0;
+  white-space: pre; // pieliekot white-space: pre izvietojums vairākās rindās
+  background: pink;
 }
+
+// .comment_first_block {
+//   display:flex;
+//   justify-content:space-between;
+//   margin-bottom:2rem;
+
+//   .message {
+//       margin:0;
+//       white-space: pre; // pieliekot white-space: pre izvietojums vairākās rindās
+//       background: pink;
+//   }
+// }
 
 .comments {
   margin:auto;

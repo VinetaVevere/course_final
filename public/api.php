@@ -21,26 +21,34 @@ if (isset($_GET['name']) && is_string($_GET['name'])) {
             isset($_POST['phone']) && is_string($_POST['phone']) &&
             isset($_POST['message']) && is_string($_POST['message'])
          ) {
+
+            //noņemam tukšuma simbolus beigās
+            $author = trim($_POST['author']);
+            $email = trim($_POST['email']);
+            $phone = trim($_POST['phone']);
+            $message = trim($_POST['message']);
+            
             // Tikai šādi pierakstot bootstraps nezina, no kuras mapes tp DB dabūt ārā. Tāpēc augšā jāraksta use Storage\DB; Izmantojam to DB, kas iekš Storage
             $comment_manager = new DB('contacts'); //konstruējam objektu, padodot uz to tabulas nosaukumu. Izveidojam, mainīgo $db. Varam pārsaukt par comment_manager. 
             // šajā vietā izvadām
             $output = [
                 'status' => true,
-                //Uzmanīgi ar komatiem
-                'author' => $_POST['author'], //Response būs piemēram, šāds "author": "Vineta V\u0113vere",
-                'email' => $_POST['email'],
-                'phone' => $_POST['phone'],
-                // Pēdējam komata nav, ja aiz tā nekas neseko!!!  
-                'message' => $_POST['message'], 
+                'author' => $author, //Response būs piemēram, šāds "author": "Vineta V\u0113vere",
+                'email' => $email,
+                'phone' => $phone,
+                // masīvā pēdējam komata nav, ja aiz tā nekas neseko!!!  
+                'message' => $message, 
                 //kaut kāds test, db izsaucam metodi addEntry(), uz viņu padodod visu masīvu test' => $db->addEntry($_POST). Drošāk pa vienam.
                 //šeit varam atgriezt id. Id datu bāzes pusē izveidots. Lai addEntry atgriež atpakaļ id. Mēs uz padodam  masīvu ar autoru, e-pastu, telefona Nr un ziņu.
                 'id' => $comment_manager ->addEntry([ 
+                    // šeit notiek datu sūtīšana uz datu bāzi 
                     //'author' (atslēga) => $_POST['author'] (vērtība),
-                    'author' => $_POST['author'],
-                    'email' => $_POST['email'],
-                    'phone' => $_POST['phone'],
-                    'message' => $_POST['message'] 
-                    ])
+                    // ar funkciju trim noņem atstarpes beigās un sākumā
+                    'author' => $author,
+                    'email' => $email,
+                    'phone' => $phone,
+                    'message' => $message
+                ])
             ];
         }
     }   
