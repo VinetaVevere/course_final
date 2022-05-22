@@ -9,7 +9,7 @@ class DB
     private $connection = null;
 
     //$table_name tiek iestatīts konstruēšanas brīdī. Tā tiek padota uz konstruktoru. API.php failā tika konstruēts, tad tur arī padodam: $db = new DB(contacts);
-    public function __construct($table_name) {
+    public function __construct(string $table_name) {
         //Datu bāzes konfigurācija. Mainīgie izveidoti, lai tālāk connection izveidotu: $conn = new mysqli($servername, $username, $password, $dbname);
         $this->table_name = $table_name; //this, jo noderēs citās metodēs
         // $servername = "localhost";
@@ -24,7 +24,7 @@ class DB
             die("Connection failed: " . $this->conn->connect_error);
         }
     }
-    
+
     //Pārnests no Constructor daļas.
     //Deconstruct tiek izsaukts tad, kad vairs neizmantojam klasi php kodā, automātiski izsauksies šī metode function __deconstruct() un aizvērs ciet savienojumu.
     public function __deconstruct() {
@@ -33,7 +33,7 @@ class DB
 
     //Konekcija jau būs izveidojusies.  Tabula zināma. Vajag ko līdzīgu getAll() {}
     //$ entry ir masīvs, kas sastāv no autora, epasta,....  (api.php) 'author' => $_POST['author']
-    public function addEntry($entry) {
+    public function addEntry(array $entry) {
 
         // Iesim cauri šim masīvam $entry un katru reizi iekš šī {} cikla, būs pieejam šī konkrētā ieraksta atslēga $key un vērtība  $value. Masīvs kā tabula 
         // api.php 'author' (atslēga) => $_POST['author'] (vērtība),
@@ -94,6 +94,14 @@ class DB
         // return ['test']; // sākonējais tests, lai pārbaudīti, vai ieiet šajā failā un funkcijā. 
         }
         return false;
+    }
+
+    //kad definē paramatrus, tad katram parametram var norādīt tipu, jo sagaidām: int $id. Ja datu tips nesakritīs, tad būs kļūda un nenotiks pieprasījums
+    public function deleteEntry(int $id) {
+        $sql = "DELETE FROM " . $this->table_name . " WHERE id=$id";
+
+        //salīdzinājums vienmēr atgriezīs boolean tipa vērtību. ja šie nebūs vienādi, tad būs false.
+        return ($this->conn->query($sql) === true);
     }
 
     public function getError() {

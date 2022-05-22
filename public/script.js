@@ -23,7 +23,6 @@ document.getElementById('Work').onclick = function () {
     // console.log("api.php?author"); //Izvada Vineta
 // });
 
-
 // Skripti Comments iesniegšanai
 
 // Pārtvert notikumu uz formu. Piemēram sākumā izvadīt kaut ko consolē, kad submito formu.
@@ -35,12 +34,18 @@ const comment_template = comment_block.querySelector('.template'); //nodefinēts
 //Response vajadzētu saturēt datus no db.php funkcijas getAll(), bet ierakstītus iekš 'comments' no api.php ('comments' => $db->getAll)
 //metode izpildās lapai pārlādējoties
 xhttp.get('api.php?name=get-comments', function (response) {
-   console.log(response); 
-
+  console.log('xhttp.get response'); 
+  console.log(response);
+  console.log('xhttp.get response.comments'); 
+  console.log(response.comments);
   //Izlaist cauri addComment darbību. Ejam cauri masīvam response.comments. Katru reizi jauns ieraksts būs mainīgajā comment.
   for (let comment of response.comments) {
   //varam izsaukt funkciju addComment
-    addComment(comment.author, comment.email, comment.phone, comment.message);
+    addComment(comment.id, comment.author, comment.email, comment.phone, comment.message);
+    console.log('comment or response.comments'); 
+    console.log(comment); 
+    console.log('comment.id'); 
+    console.log(comment.id)
   }
 })
 
@@ -56,7 +61,9 @@ form.onsubmit = function (event) { //Kad forma submitota
     xhttp.postForm(this, function (response) { 
 
       /** šeit jau atbildes datus varam izmantot*/
-      addComment(response.author, response.email, response.phone, response.message);
+      addComment(response.id, response.author, response.email, response.phone, response.message); //response.id šeit pievienots, kad realizēta dzēšana
+      console.log('addComment response.id');  
+      console.log(response.id);
     });
 
     /** Vienkāršais alternatīvais variants, kad ņēmām datus no formas nevis jau no responsa. Nav aktuāls, bet viegli saprast
@@ -70,7 +77,7 @@ form.onsubmit = function (event) { //Kad forma submitota
 };
 
 /** Izvadīt. Uz addComment metodi padodas 4 vērtības. Lai pievienotu, vajadzēs id)*/
-function addComment(author, email, phone, message) { 
+function addComment(id, author, email, phone, message) { 
   // console.log(author, email, phone, message, message);
   /**
    * Iekš šīs funkcijas tiks izveidots new_comment, kurš tiks paņemts no komentāru template - const comment_template 
@@ -85,12 +92,37 @@ function addComment(author, email, phone, message) {
    /** Lai būtu redzams!!! Jaunajam komentāram vajag noņemt klasi (jo klasei bija stils, ka nav redzams), jo viņš nokopējās un arī parādījās klases template.*/
    new_comment.classList.remove('template'); 
    
-    /** Iekš new_comment.querySelector('.message') Varam pievienot tekstu. */
     new_comment.querySelector('.author').textContent = author;
+    /** Iekš new_comment.querySelector('.message') Varam pievienot tekstu. */
     /** tajā div elementā (<div class="comments__entry" - bez template!!), atrodam elementu ar klasi message un pievienojam kā tekstu šo te ziņu (message) */
     new_comment.querySelector('.message').textContent = message; 
     new_comment.querySelector('.email').textContent = email;
     new_comment.querySelector('.phone').textContent = phone;
+    //new_comment 
+    new_comment.dataset.id = id;
+
+    //No new_comment varam atlast to elementu.
+    const delete_btn = new_comment.querySelector('.delete');
+    console.log(delete_btn);
+
+    // tikai pie klikšķa izpildīt darbību
+    delete_btn.onclick = function (event) { 
+
+    //data vajadzēja priekš xhttp.post
+      const data = new FormData(); // ģenerējam data iekšpus onclick
+    //ar data.set iekš data ar kaut kādu funkciju iestatīt id.
+    //intuitīvāks, bet daudz garāk dabūt id. ceļš:  data.set('id', delete_btn.parentNode.parentNode.dataset.id);
+      data.set('id', id);
+
+      //tad data padots uz pieprasījumu
+      xhttp.post('api.php?name=delete-comment', data, function (response) {
+      // Noņemam no html tikai tad, ka uztaisīts pieprasījums un saņemta atbilde un šī funkcija izpildīsies tikai, tad ja atbildē statuss ir true
+        new_comment.remove();
+        console.log(response);
+        console.log(data);
+        console.log(new_comment);
+      })
+    }
 
      /** komentāru blokā ar append pievienosim new_comment */
     comment_block.append(new_comment)
