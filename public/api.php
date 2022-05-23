@@ -3,6 +3,7 @@
 // __DIR - vispirms tekošā mape. Tad mapi augstāk . '/../. Tad uz private mapi.
 // caur šejieni pielādēs class DB, kur boostrap.php ir spl_autoload_register, kas mēģinās šo klasi includot, ja klase vēl nav pieejama
 include __DIR__ . '/../private/bootstrap.php'; 
+// echo file_get_contents(__DIR__ . '/../private/bootstrap.php');
 
 use Storage\DB; //Variants ar as (piemēram, use Storage\DB as DataBase ir, kad lielāks projekts). Visbiežāk izmantotie nosaukumi sāk jau aizpildīties.
 
@@ -58,18 +59,18 @@ if (isset($_GET['name']) && is_string($_GET['name'])) {
         $comment_manager  = new DB('contacts'); // Izveidots DB. Pārsaukts no $db uz $comment_manager, lai pēc nosaukuma saistīts ar komentāru tabulu datu bāzē.
         $output = [
             'status' => true,
-            'comments' => $comment_manager ->getAll() // getAll būs mūsu metode
+            'comments' => $comment_manager ->getAll() // getAll būs mūsu izveidota metode
         ];     
     }
 
-    //par cik pieprasījums bija ar post metodi, tad tā daļa, kas ierakstīta adresē (jo šeit ir query parametrs), nosūtīsies ar get metodi
+    //Par cik pieprasījums bija ar post metodi, tad tā daļa, kas ierakstīta adresē (jo šeit ir query parametrs), nosūtīsies ar get metodi
     elseif ($_GET['name'] === 'delete-comment') {
         //Izmantojam DB klasi
         $comment_manager  = new DB('contacts');
          
-        // tālāk jānolasa id. Vispirms pārbaude. post masīvu pārbaudām, vai ir padots id un vai ir tekstuāla formāta. Nav masīvs
-         if (isset($_POST['id']) && is_string($_POST['id'])
-        ) {
+        // tālāk jānolasa id. Vispirms pārbaude. post masīvu pārbaudām, vai ir padots id un vai ir tekstuāla formāta. Vai nav masīvs
+        if (isset($_POST['id']) && is_string($_POST['id'])) {
+            //tiks izveidots id
             $id = (int) $_POST['id'];   
             
             $output = [
@@ -78,6 +79,21 @@ if (isset($_GET['name']) && is_string($_GET['name'])) {
                 'id' => $id,
             ];
         }
+    }
+    elseif ($_GET['name'] === 'get-comment') {
+        //Ja gribam dabūt konkrētu komentāru, pārbaudām, vai ir dabūts konkrēts id
+        if (isset($_POST['id']) && is_string($_POST['id'])) {
+            //Izveidojam $comment_manager objektu
+            $comment_manager  = new DB('contacts'); 
+            //dabūjam id
+            $id = (int) $_POST['id']; 
+            //atgriežam datus
+            $output = [
+                'status' => true,
+                // dabūjam pēc id komentāru un izvadām mainīgajā ar atslēgu'comment'
+                'comment' => $comment_manager ->getEntry($id)
+            ];   
+        }  
     }
 }
 

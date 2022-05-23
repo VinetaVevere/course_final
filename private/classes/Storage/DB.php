@@ -96,7 +96,24 @@ class DB
         return false;
     }
 
-    //kad definē paramatrus, tad katram parametram var norādīt tipu, jo sagaidām: int $id. Ja datu tips nesakritīs, tad būs kļūda un nenotiks pieprasījums
+    public function getEntry(int $id) {
+        //šīs rindas mērķis ir izvadīt tekstu, kur teksts pēc tam tiks izmantots. Teksts būs sql valodā. 
+        //no vairākiem teksta nogriežņiem izveido SQL komandu
+        //this - ir objekts, tas kurš DB.php. Iekš šī objekta ir pieejams table.name
+        $sql = "SELECT * FROM " . $this->table_name . " WHERE id=" .$id; //  Var pierakstīs arī šādi: $sql = "SELECT * FROM " . $this->table_name . " WHERE id=$id"; , jo sql šo $ simbolu atpazīst kā mainīgo un id kā vērtību
+        // SELECT * FROM contacts WHERE id=4 (piemēram id =4, mainīsies id, atkarībā no situācijas )
+        
+        // tad šo sql varam padot uz $this->conn->query() metodi, lai sql komandu izpildītu datu bāzē. 
+        $result = $this->conn->query($sql);
+
+        if ($result !== false) {
+            //tā kā prasām pēc id, tad zinām, ka maksimālais, ko varam dabūt, ir viens ieraksts. Tāpēc fetch_assoc() dabūjam vienu ierakstu. Nevis masīvu, kur viens ieraksts - fetch_assoc(MYSQLI_ASSOC)
+            return $result->fetch_assoc();
+        }
+        return false;
+    }
+
+    //kad definē parametrus, tad katram parametram var norādīt tipu, jo sagaidām: int $id. Ja datu tips nesakritīs, tad būs kļūda un nenotiks pieprasījums
     public function deleteEntry(int $id) {
         $sql = "DELETE FROM " . $this->table_name . " WHERE id=$id";
 

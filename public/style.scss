@@ -194,7 +194,7 @@ img {
   padding: 60px 57px 0px 0px;
 }
 
-.icon_top a {
+.icon_top * {
   width: 61px;
   height: 56px; 
   display: flex;
@@ -272,14 +272,23 @@ img {
   }
 
   .cert_block{
-    padding-right: 30px;
+    padding: 30px;
+    // display:flex;
+    // flex-direction: column;
+    // justify-content:flex-start;
+  }
+
+  .cert_block div {
     display:flex;
-    flex-direction: column;
-    justify-content:flex-start;
+    padding-top: 30px;
+  }
+
+
+  .cert_block h1 {
+    font-size: 30px;
   }
 
   .cert_block h2 {
-    padding-bottom: 30px;
     font-size: 30px;
   }
 
@@ -363,7 +372,6 @@ img {
       // top:-5px;
   
       // background: #D7D7D7;
-      background: pink;
       margin: auto; 
     }
 
@@ -416,7 +424,7 @@ img {
       display: flex;
       flex-wrap: wrap;
       -ms-flex-wrap: wrap; /* IE10 */
-      padding: 0 4px;
+      padding: 4px;
     }
     
     /* Create equal columns that sits next to each other */
@@ -465,6 +473,7 @@ img {
 /* Contact BOX by ID */
 #contact {
   @include section_box;
+  text-decoration: none; // nevaru saprast, kāpēc nekur šitais neiedarbojas
  }
 
 /* Contact input box */
@@ -490,13 +499,18 @@ img {
     margin: 20px 0px;
   }
 
+  // Your message
+  #client_message {
+    height: 100px;
+    resize: vertical;
+  }
+
   .contact__block input[type="message"] {
     width: 300px;
     height: 150px;
   }
   
-  .contact__block input:focus,
-  button:focus {
+  .contact__block input:focus, button:focus {
     box-shadow: 0px 0px 10px rgba(82, 0, 136, 0.616);
   }
   
@@ -529,6 +543,7 @@ img {
     // text-decoration: none;
     background: transparent;
     cursor: pointer;
+    margin-bottom: 50px;
   }
   
   #submit:hover {
@@ -549,45 +564,58 @@ img {
   }
 }
 
-
-.message {
-  margin:0;
-  white-space: pre; // pieliekot white-space: pre izvietojums vairākās rindās
-  background: pink;
-}
-
-// .comment_first_block {
-//   display:flex;
-//   justify-content:space-between;
-//   margin-bottom:2rem;
-
-//   .message {
-//       margin:0;
-//       white-space: pre; // pieliekot white-space: pre izvietojums vairākās rindās
-//       background: pink;
-//   }
-// }
-
 .comments {
-  margin:auto;
-  max-width:25rem;
+  max-width:400rem;
   padding:1rem;
+  margin:auto;
 }
 
 .comments__entry {
+  display: flex;
+  // flex-direction: column;
   border-bottom: 1px solid rgb(100, 87, 126);
   padding: 0.25rem;
-
-  .author {
-      display:block;
-      text-align:right;
-  }
 }
+
+.comments__entry * {
+  display: flex;
+  width: 400px;
+}
+
+comments__entry .author{
+  width: 100px;
+}
+
+// .message {
+//   max-width: 300px;
+//   margin:0;
+//   white-space: pre; // pieliekot white-space: pre izvietojums vairākās rindās
+// }
 
 .comments__entry:last-child {
   border:0;
 }
 
+.popup {
+  max-width: 400px;
+  max-height: 700px;
+  // display:flex;
+  // flex-direction: column;
+  // background: rgba(228, 81, 81, 0.48);
+  background: rgba(204, 200, 200, 0.48);
+  // width:100vw;
+  // height:100vh;
+  position:fixed;
+  top:0;
+  left:0;
+  display:none;
+  align-items:center;
+  margin: auto;
+
+  form {
+      margin:0 auto;
+  }
+}
 
   // Footer section
   footer {

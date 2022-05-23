@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="content-language" content="lv">
 <link rel="stylesheet" href="style.css">
 <title>Vineta_portfolio</title>
 
@@ -67,14 +68,15 @@
                 <div class="acp_pmi_block"> 
                 <div>  
                     <div class="cert_block">
-                        <h2>Certificates of PMI ACP and PMI PMP</h2>
-                        <h3>Issued by:</h3>
-                        <img src="images/pmilogo.svg" class="icon__pmi" alt="" />
+                        <h3>Certificates of PMI ACP and PMI PMP</h3>
+                        <div>
+                            <h3>Issued by:</h3>
+                            <img src="images/pmilogo.svg" class="icon__pmi" alt="" />
+                         </div>
                     </div>
-                        <img width="320" height="192" alt="" data-src="https://www.triveniit.com/wp-content/uploads/2016/04/agile-waterfall-960x576.png" class="attachment-twentyfourteen-full-width size-twentyfourteen-full-width wp-post-image lazyloaded" 
+                        <!-- <img width="320" height="192" alt="" data-src="https://www.triveniit.com/wp-content/uploads/2016/04/agile-waterfall-960x576.png" class="attachment-twentyfourteen-full-width size-twentyfourteen-full-width wp-post-image lazyloaded" 
                         src="https://www.triveniit.com/wp-content/uploads/2016/04/agile-waterfall-960x576.png"
-                        class="icon__agile">
-                   
+                        class="icon__agile"> -->    
                 </div>
             </div>
     </div>
@@ -203,19 +205,20 @@
         <div class="gallery_row">
             <div class="gallery_column">
                 <img src="images/ei.png">
-                <img src="images/test-automation.png">
+                <img src="images/science.png">
             </div>
             <div class="gallery_column">
-                <img src="images/training.png">
-                <img src="images/science.png">
+                <img src="images/Theory_U.jpg">
+                <img src="images/Social_Enterpr.png">
             </div> 
             <div class="gallery_column">
-                <img src="images/play.png">
-                <img src="images/PietOudolf_Garten.png">
+                <img src="images/wf_agile.png">
+                <img src="images/DevOpsLoop.png">
             </div> 
         </div>
     </div>
 
+    <!-- !!!! Nesaprotu, kāpēc šī sadaļa izsauc to, ka atveras bildes spiežot uz ievadlaukiem  nākošajā sadaļā-->
     <!-- <div class="gallery_block_private">
         <div class="gallery_row">
             <div class="gallery_column">
@@ -242,6 +245,7 @@
             </div> 
         </div>
     </div> -->
+
 </section>
 
 <!-- Section Contact -->
@@ -261,7 +265,7 @@
                 <input type="phone" name="phone" id="client_phone" placeholder="phone number">
             </div>
             <div>
-                <textarea name="message" rows="10" placeholder="Your Message" required></textarea>
+                <textarea name="message" rows="10" id="client_message" placeholder="Your Message" required></textarea>
             </div>
             <div>
                 <button type="submit" id="submit">Submit</button>
@@ -275,7 +279,7 @@
         <!-- Template katru reizi kopējas. Javascrips kopēs klasi template un ievietos atkārtoti jau bez klases template -->
         <!-- Sākumā .template <display:none; Katru reizi taisot clone (scrip.js const new_comment = comment_template.cloneNode(true);) nokopēsies div elements --> 
             <div class="comments__entry template"> 
-                <!-- <div class="comment_first_block">  -->
+                    <strong class="author"></strong>
                     <p class="email"></p>
                     <p class="phone"></p>
                     <!--te ievietos komentāru-->
@@ -283,20 +287,19 @@
                 <div>
                     <a href="#" class="delete">delete</a>
                     <a href="#" class="edit">edit</a>
-                <!-- </div>    -->
-                <!--  te ievietos autoru-->
-                <strong class="author"></strong>
             </div>
         </div>  
-        
-        <!-- <div class="popup">
-            <form action="api.php?name=update-comment" id="comments_update_form">
-                <input type="hidden" name="id">
-                <input type="text" name="author" placeholder="Name" required>
-                <textarea name="message" rows="10" placeholder="Comment Message" required></textarea>
-                <button type="submit">save</button>
-            </form>
-        </div> -->
+    </div>
+
+    <div class="popup">
+        <form action="api.php?name=update-comment" id="comments_update_form">
+            <input type="hidden" name="id">
+            <input type="text" name="author" placeholder="Name" required>
+            <input type="email" name="email" placeholder="enter your email*" required>
+            <input type="phone" name="phone" placeholder="phone number">
+            <textarea name="message" rows="10" placeholder="Comment Message" required></textarea>
+            <button type="submit">save</button>
+        </form>
     </div>
     <!-- <form id="submit" method="post" action="mailto://vineta.vevere@gmail.com">
             <a

@@ -190,7 +190,7 @@ img {
   padding: 60px 57px 0px 0px;
 }
 
-.icon_top a {
+.icon_top * {
   width: 61px;
   height: 56px;
   display: -webkit-box;
@@ -300,21 +300,21 @@ img {
 }
 
 .cert_block {
-  padding-right: 30px;
+  padding: 30px;
+}
+
+.cert_block div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  padding-top: 30px;
+}
+
+.cert_block h1 {
+  font-size: 30px;
 }
 
 .cert_block h2 {
-  padding-bottom: 30px;
   font-size: 30px;
 }
 
@@ -418,7 +418,6 @@ img {
 
 .gallery_section {
   max-width: 1920px;
-  background: pink;
   margin: auto;
 }
 
@@ -490,7 +489,7 @@ img {
   flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   /* IE10 */
-  padding: 0 4px;
+  padding: 4px;
 }
 
 /* Create equal columns that sits next to each other */
@@ -568,6 +567,7 @@ img {
   letter-spacing: 0.35538em;
   text-align: center;
   color: #000000;
+  text-decoration: none;
 }
 
 /* Contact input box */
@@ -598,13 +598,17 @@ img {
   margin: 20px 0px;
 }
 
+#client_message {
+  height: 100px;
+  resize: vertical;
+}
+
 .contact__block input[type="message"] {
   width: 300px;
   height: 150px;
 }
 
-.contact__block input:focus,
-button:focus {
+.contact__block input:focus, button:focus {
   -webkit-box-shadow: 0px 0px 10px rgba(82, 0, 136, 0.616);
           box-shadow: 0px 0px 10px rgba(82, 0, 136, 0.616);
 }
@@ -638,6 +642,7 @@ button:focus {
   color: #000000;
   background: transparent;
   cursor: pointer;
+  margin-bottom: 50px;
 }
 
 #submit:hover {
@@ -656,30 +661,51 @@ button:focus {
   resize: vertical;
 }
 
-.message {
-  margin: 0;
-  white-space: pre;
-  background: pink;
-}
-
 .comments {
-  margin: auto;
-  max-width: 25rem;
+  max-width: 400rem;
   padding: 1rem;
+  margin: auto;
 }
 
 .comments__entry {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   border-bottom: 1px solid #64577e;
   padding: 0.25rem;
 }
 
-.comments__entry .author {
-  display: block;
-  text-align: right;
+.comments__entry * {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 400px;
+}
+
+comments__entry .author {
+  width: 100px;
 }
 
 .comments__entry:last-child {
   border: 0;
+}
+
+.popup {
+  max-width: 400px;
+  max-height: 700px;
+  background: rgba(204, 200, 200, 0.48);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+}
+
+.popup form {
+  margin: 0 auto;
 }
 
 footer {
