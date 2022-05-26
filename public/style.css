@@ -322,13 +322,6 @@ img {
   font-size: 20px;
 }
 
-/* separatorBlack 1 */
-.seperatorBalck {
-  width: 170px;
-  height: 12px;
-  background: url(separatorBlack.png);
-}
-
 /* Skills "Section"*/
 /* Skills BOX by ID */
 #skills {
@@ -386,8 +379,8 @@ img {
   /* IE10 */
   -webkit-box-flex: 24%;
           flex: 24%;
-  max-width: 100%;
   padding: 0px 4px;
+  text-align: center;
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
@@ -489,7 +482,8 @@ img {
   flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   /* IE10 */
-  padding: 4px;
+  padding: 0px 0px 4px 0px;
+  background-color: white;
 }
 
 /* Create equal columns that sits next to each other */
@@ -499,7 +493,7 @@ img {
   -webkit-box-flex: 25%;
           flex: 25%;
   max-width: 100%;
-  padding: 0 4px;
+  padding: 0px 4px;
 }
 
 .gallery_column img {
@@ -603,14 +597,90 @@ img {
   resize: vertical;
 }
 
-.contact__block input[type="message"] {
-  width: 300px;
-  height: 150px;
-}
-
 .contact__block input:focus, button:focus {
   -webkit-box-shadow: 0px 0px 10px rgba(82, 0, 136, 0.616);
           box-shadow: 0px 0px 10px rgba(82, 0, 136, 0.616);
+}
+
+.template {
+  display: none;
+}
+
+.comments {
+  width: 70%;
+  padding: 1rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: auto;
+}
+
+.comments__entry {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #64577e;
+  padding: 0.25rem;
+}
+
+.comments__entry .author {
+  width: 100px;
+  word-break: break-all;
+}
+
+.comments__entry .email {
+  width: 300px;
+  word-break: break-all;
+}
+
+.comments__entry .phone {
+  width: 100px;
+  word-break: break-all;
+}
+
+.comments__entry .message {
+  width: 400px;
+  min-width: 100px;
+  word-break: break-all;
+}
+
+.comments__entry:last-child {
+  border: 0;
+}
+
+.popup {
+  background: rgba(97, 95, 95, 0.801);
+  width: 100vw;
+  height: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popup form {
+  margin: 0 auto;
+}
+
+.popup form * {
+  width: 310px;
+  background-color: #e7e5e5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: column;
+      -ms-flex-pack: column;
+          justify-content: column;
+  margin: 5px auto;
+}
+
+.popup form textarea {
+  height: 200px;
 }
 
 #submit {
@@ -647,65 +717,6 @@ img {
 
 #submit:hover {
   opacity: 0.7;
-}
-
-.template {
-  display: none;
-}
-
-#comments_form {
-  margin-top: 50px;
-}
-
-#comments_form textarea {
-  resize: vertical;
-}
-
-.comments {
-  max-width: 400rem;
-  padding: 1rem;
-  margin: auto;
-}
-
-.comments__entry {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-bottom: 1px solid #64577e;
-  padding: 0.25rem;
-}
-
-.comments__entry * {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 400px;
-}
-
-comments__entry .author {
-  width: 100px;
-}
-
-.comments__entry:last-child {
-  border: 0;
-}
-
-.popup {
-  max-width: 400px;
-  max-height: 700px;
-  background: rgba(204, 200, 200, 0.48);
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: none;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: auto;
-}
-
-.popup form {
-  margin: 0 auto;
 }
 
 footer {
@@ -772,6 +783,13 @@ footer * {
   }
   .icon_top {
     padding-top: 10px;
+  }
+  #aboutme, #gallery, #skills, #contacts {
+    max-width: 120px;
+  }
+  #gallery {
+    top: -60px;
+    height: 10px;
   }
 }
 

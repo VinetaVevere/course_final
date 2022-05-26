@@ -295,14 +295,6 @@ img {
   .cert_block h3 {
     font-size: 20px;
   }
-
-    /* separatorBlack 1 */
-  .seperatorBalck { // netiek izmantots
-    width: 170px;
-    height: 12px;
-    background: url(separatorBlack.png);
-  }
-  
     /* Skills "Section"*/
 
     /* Skills BOX by ID */
@@ -310,7 +302,7 @@ img {
      @include section_box;
     }
 
-    .skills_block {
+    .skills_block { 
       max-width: 1004px;
       margin:auto;
     }
@@ -327,6 +319,7 @@ img {
     .skills_row {
       display: -ms-flexbox; /* IE10 */
       display: flex;
+      //resposivitātei
       flex-wrap: wrap;
       -ms-flex-wrap: wrap; /* IE10 */
       padding: 20px 0;
@@ -336,10 +329,10 @@ img {
     .skills_column {
       -ms-flex: 24%; /* IE10 */
       flex: 24%;
-      max-width: 100%;
+      // max-width: 100%;
       padding: 0px 4px;
+      text-align: center;
     }
-  
 
 /* Responsive layout - makes a two column-layout instead of four columns */
   @media screen and (max-width: 808px) {
@@ -386,10 +379,7 @@ img {
       @include section_box;
         position: relative;
         top: -100px;
-        // width: 100%;
         margin: 0 auto;
-        // width: 300px;
-        // height: 50px;
     }
 
     .gallery_section img {
@@ -424,7 +414,8 @@ img {
       display: flex;
       flex-wrap: wrap;
       -ms-flex-wrap: wrap; /* IE10 */
-      padding: 4px;
+      padding: 0px 0px 4px 0px;
+      background-color: white;
     }
     
     /* Create equal columns that sits next to each other */
@@ -432,7 +423,7 @@ img {
       -ms-flex: 25%; /* IE10 */
       flex: 25%;
       max-width: 100%;
-      padding: 0 4px;
+      padding: 0px 4px;
     }
     
     .gallery_column img {
@@ -500,20 +491,119 @@ img {
   }
 
   // Your message
-  #client_message {
+    #client_message {
     height: 100px;
     resize: vertical;
   }
 
-  .contact__block input[type="message"] {
-    width: 300px;
-    height: 150px;
-  }
-  
   .contact__block input:focus, button:focus {
     box-shadow: 0px 0px 10px rgba(82, 0, 136, 0.616);
   }
+
+  // .contact__block input[type="message"] {
+  //   width: 300px;
+  //   height: 150px;
+  // }
   
+  // comments__entry template
+  .template {
+    display:none; //sākumā klase tiks pazaudēta
+}
+
+// #comments_form {
+//   margin-top:50px;
+//   textarea {
+//       resize: vertical;
+//   }
+// }
+
+.comments {
+  width:70%;
+  padding:1rem;
+  box-sizing:border-box;
+  margin:auto;
+}
+
+.comments__entry {
+  display: flex;
+  justify-content: space-between;
+  // flex-direction: column;
+  border-bottom: 1px solid rgb(100, 87, 126);
+  padding: 0.25rem;
+}
+
+// .comments__entry * {
+//   display: flex;
+//   width: 400px;
+// }
+
+.comments__entry .author{
+  width: 100px;
+  word-break: break-all;
+}
+
+.comments__entry .email{
+  width: 300px;
+  word-break: break-all;
+}
+
+.comments__entry .phone{
+  width: 100px;
+  word-break: break-all;
+}
+
+.comments__entry .message{
+  width: 400px;
+  min-width:100px;
+  word-break: break-all;
+}
+
+// .message {
+//   max-width: 300px;
+//   margin:0;
+//   white-space: pre; // pieliekot white-space: pre izvietojums vairākās rindās
+// }
+
+.comments__entry:last-child {
+  border:0;
+}
+
+//Contacts editing form
+
+.popup {
+  background: rgba(97, 95, 95, 0.801);
+  width:100vw;
+  height:100vw;
+  position:fixed;
+  top:0;
+  left:0;
+  display:none;
+  align-items:center;
+
+  //.popup form 
+    form {
+        margin:0 auto;
+    }
+
+    form * {
+      width: 310px;
+
+      background-color: #e7e5e5;
+
+      display:flex;
+      justify-content: column;
+
+      // color: #000000;
+
+      margin: 5px auto;
+    }
+}
+
+//Popu message laukam ir jābūt lielākam
+.popup form textarea {
+  height:200px;
+}
+
   #submit {
     top: 500px;
     width: 120px;
@@ -549,73 +639,6 @@ img {
   #submit:hover {
     opacity: 0.7;
   }
-
-  //Contact administration form
-
-  // comments__entry template
-  .template {
-    display:none; //sākumā klase tiks pazaudēta
-}
-
-#comments_form {
-  margin-top:50px;
-  textarea {
-      resize: vertical;
-  }
-}
-
-.comments {
-  max-width:400rem;
-  padding:1rem;
-  margin:auto;
-}
-
-.comments__entry {
-  display: flex;
-  // flex-direction: column;
-  border-bottom: 1px solid rgb(100, 87, 126);
-  padding: 0.25rem;
-}
-
-.comments__entry * {
-  display: flex;
-  width: 400px;
-}
-
-comments__entry .author{
-  width: 100px;
-}
-
-// .message {
-//   max-width: 300px;
-//   margin:0;
-//   white-space: pre; // pieliekot white-space: pre izvietojums vairākās rindās
-// }
-
-.comments__entry:last-child {
-  border:0;
-}
-
-.popup {
-  max-width: 400px;
-  max-height: 700px;
-  // display:flex;
-  // flex-direction: column;
-  // background: rgba(228, 81, 81, 0.48);
-  background: rgba(204, 200, 200, 0.48);
-  // width:100vw;
-  // height:100vh;
-  position:fixed;
-  top:0;
-  left:0;
-  display:none;
-  align-items:center;
-  margin: auto;
-
-  form {
-      margin:0 auto;
-  }
-}
 
   // Footer section
   footer {
@@ -691,6 +714,15 @@ comments__entry .author{
 
   .icon_top {
     padding-top: 10px;
+  }
+
+  #aboutme, #gallery, #skills, #contacts {
+   max-width: 120px;
+  }
+
+  #gallery {
+    top: -60px;
+    height: 10px;
   }
 }
 

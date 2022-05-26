@@ -53,6 +53,44 @@ if (isset($_GET['name']) && is_string($_GET['name'])) {
             ];
         }
     }   
+
+    //Rakstām api priekš update-comments, kas tiek izsaukts submitojot formu form_update, <form action="api.php?name=update-comment" id="comments_update_form">
+    elseif ($_GET['name'] === 'update-comment') {
+        if (    
+            // Api pusē pārbaudām, vai tika padoti īstie dati. Izmantojam POS metodi.
+            isset($_POST['id']) && is_string($_POST['id']) &&
+            isset($_POST['author']) && is_string($_POST['author']) &&
+            isset($_POST['email']) && is_string($_POST['email']) &&
+            isset($_POST['phone']) && is_string($_POST['phone']) &&
+            isset($_POST['message']) && is_string($_POST['message'])
+         ) {
+            $id = (int) $_POST['id']; 
+
+            $author = trim($_POST['author']);
+            $email = trim($_POST['email']);
+            $phone = trim($_POST['phone']);
+            $message = trim($_POST['message']);
+
+            $comment_manager  = new DB('contacts'); // Izveidots DB. Pārsaukts no $db uz $comment_manager, lai pēc nosaukuma saistīts ar komentāru tabulu datu bāzē.
+
+            //Aprakstām, kādā formātā agriezīsim tekstu. Varēja tādā pašā kā add-comments gadījumā
+            $output = [
+                'status' => true,
+                //atgriezīsim arī id
+                'id' => $id,
+                // update metodē noteikti ir jāpadod id un jauni dati
+                // šeit varēsim dabūt atbildi un uzreiz vienā mainīgajā comment. Nebūs jādala, atsevišķi author,,, message
+                'comment' => $comment_manager ->updateEntry($id, [
+                    // šīs vērtības, kuras tiks updatotas
+                    'author' => $author,
+                    'email' => $email,
+                    'phone' => $phone,
+                    'message' => $message
+                ] )
+            ];     
+         }
+    }
+
     // vajag tikai piekļūt datu bāzei un izvadīt. get-comments 
     // taisot pieprasījumu ar javascript uz šo adresi: $_GET['name'] === 'get-comments', tiks izpildīta metode getAll() un metode pagaidām atgriež masīvu ar vārdu test (DB.php return ['test'];)
     elseif ($_GET['name'] === 'get-comments') {

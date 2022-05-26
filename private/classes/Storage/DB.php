@@ -70,6 +70,31 @@ class DB
         return false;
     }
 
+    // uz updateEntry padodam integer tipa id un masīva tipa entry
+    public function updateEntry(int $id, array $entry) {
+        //Kolonnu un vērtību tekstuālā veidā pieraksts. Sākotnēji tukšs.
+        $column_value_str = '';
+        //Ejot cauri ciklam ir jāpievienojas vienam šāda ierakstam. Piemēram, author='Vineta'
+        foreach ($entry as $key => $value) {
+           //Iekš $column_value_str pievienosim klāt sākumā atslēgu = key, lai dabūtu, piemēram, author vērtību.
+           //Lai ievietotu viena simbola pēdiņu, tā jāieliek dubultajās pēdiņās.
+           //šī rinda var izpildīties vairākkārt. Un izpildoties pēdējo reizi arī beigās tiks pieliktas pēdiņas, tāpēc nākošajā rindā tiek izmantota funkcija rtrim();
+           $column_value_str .= ' ' . $key . "=" . "'" . $this->conn->real_escape_string($value) . "',";
+            
+            // Piemērs: $sql = "UPDATE " . $this->table_name . SET author='Vineta', email='vv@gmail.com', phone'+371123123', message="Sveiki Pasaule!' WHERE id=$id";
+        }
+        //noņemam pēdējo komatu un ierakstīsim tajā pašā mainīgajā. Tagad šo mainīgo $column_value_str var ielikt šajā vietā: author='Vineta', email='vv@gmail.com', phone'+371123123', message="Sveiki Pasaule!
+        $column_value_str = rtrim($column_value_str, ',');
+
+        $sql = "UPDATE " . $this->table_name . " SET $column_value_str WHERE id=$id";
+
+        $result = $this->conn->query($sql);
+        if ($result === true) {
+            return $entry;
+        }
+        return false;
+    }
+
     //Publiska funkcija getAll un tā izvadīs masīvu, kas saturēs visus ierakstus. Masīvs ar masīviem. Autora, e-pasta, telefona un ziņas kombinācija
     public function getAll() {
 

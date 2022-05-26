@@ -43,13 +43,18 @@ const xhttp = {
         xhttp.onload = function() {
             if (callback !== false) {
 
-                /**parse: json saturs tiek pārsvērsts uz javascript formātu. Ja this.responseText nav Json formātā, tad kļūda, jo mēģinām ne jsonu pārveidot uz JS formātu*/
-                let response_object = JSON.parse(this.responseText); //16.05 lekcijā bija atbilde
+                /**  
+                 * parse: json saturs tiek pārsvērsts uz javascript formātu. Ja this.responseText nav Json formātā, tad kļūda, jo mēģinām ne jsonu pārveidot uz JS formātu
+                 * šeit tiek aprakstīta mainīgā response_object struktūra. Tā ir JSON.parse(this.responseText)
+                 */
+                let response_object = JSON.parse(this.responseText); //16.05 lekcijā bija atbilde. When receiving data from a web server, the data is always a string.Parse the data with JSON.parse(), and the data becomes a JavaScript object.
                 
                 /** Rinda, kas pārbauda to, kas ir atbildē. Ja ir klāt statuss */
                 if (response_object.status == true) {
 
-                /** Tad izpildām callback metodi. Un scrip.js failā ir nodefinēta callback metode*/
+                /** Tad izpildām callback metodi. Un scrip.js failā ir nodefinēta callback metode
+                * šeit pateikts, ka atbilde ir response_object 
+                */
                      callback(response_object);
                 }
             }

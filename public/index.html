@@ -218,33 +218,27 @@
         </div>
     </div>
 
-    <!-- !!!! Nesaprotu, kāpēc šī sadaļa izsauc to, ka atveras bildes spiežot uz ievadlaukiem  nākošajā sadaļā-->
-    <!-- <div class="gallery_block_private">
+    <div class="gallery_block_private">
         <div class="gallery_row">
+            
             <div class="gallery_column">
-                <a
-                href="https://unsplash.com/photos/QvjL4y7SF9k"
-                target="_blank"
-                class="image"
-            >
-                <img
-                src="https://images.unsplash.com/photo-1566146991569-696da38bb775?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                alt="meadow"
-                />
+                <a href="https://unsplash.com/photos/QvjL4y7SF9k" target="_blank" class="image">
+                    <img src="https://images.unsplash.com/photo-1566146991569-696da38bb775?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                        alt="meadow"
+                    >
+                </a>
             </div>
+
             <div class="gallery_column">
-                <a
-                href="https://unsplash.com/photos/vkQgb1lZZPQ"
-                target="_blank"
-                class="image"
-            >
-                <img
-                src="https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-                alt="meadow"
-                />
+                <a href="https://unsplash.com/photos/vkQgb1lZZPQ" target="_blank" class="image">
+                    <img
+                        src="https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+                        alt="meadow"
+                    >
+                </a>
             </div> 
         </div>
-    </div> -->
+    </div>
 
 </section>
 
@@ -255,7 +249,7 @@
         <!--  -->
         <form action="api.php?name=add-comment" id="comments_form">
             <div>
-                <!-- Lai datus varētu savākt un nosūtīt pieprasījumā, svarīgi, lai katram būtu definēts name-->
+                <!-- Lai datus varētu savākt un nosūtīt pieprasījumā, svarīgi, lai katram būtu definēts name . pēc name tiks atlasīts šis elements Javascriptā-->
                 <input type="name" name="author" id="author_name" placeholder="enter your name*" required>
             </div>
             <div>
@@ -276,15 +270,15 @@
         <div class="comments">
 
         <!-- tālāk izveidosim sagatavi, iedosim strukūru kā komentārs izskatīsies. Varam piešķirt atribūtus.--> 
+        <!-- html elementam div ir piešķirtas 2 klases: klase comments__entry un klase template --> 
         <!-- Template katru reizi kopējas. Javascrips kopēs klasi template un ievietos atkārtoti jau bez klases template -->
         <!-- Sākumā .template <display:none; Katru reizi taisot clone (scrip.js const new_comment = comment_template.cloneNode(true);) nokopēsies div elements --> 
             <div class="comments__entry template"> 
-                    <strong class="author"></strong>
-                    <p class="email"></p>
-                    <p class="phone"></p>
+                    <h4 class="author"></h4>
+                    <h4 class="email"></h4>
+                    <h4 class="phone"></h4>
                     <!--te ievietos komentāru-->
-                    <p class="message"></p> 
-                <div>
+                    <h4 class="message"></h4> 
                     <a href="#" class="delete">delete</a>
                     <a href="#" class="edit">edit</a>
             </div>
@@ -293,7 +287,7 @@
 
     <div class="popup">
         <form action="api.php?name=update-comment" id="comments_update_form">
-            <input type="hidden" name="id">
+            <input type="hidden" name="id"> <!--  value ieliksies ar javascriptu, ???type arī ieliksies programmātiski. Ir input tips, kurš nav redzams -->
             <input type="text" name="author" placeholder="Name" required>
             <input type="email" name="email" placeholder="enter your email*" required>
             <input type="phone" name="phone" placeholder="phone number">
