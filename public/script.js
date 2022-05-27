@@ -75,7 +75,7 @@ form_update.onsubmit = function (event) {
       // šeit tiek rakstīts kods, kas notiek javasscript un Html pusē, kad veikta formas updatošana
       // lai popupa logs ar visu formu pazūds. popup.style.display = 'none'
       popup.style.display = 'none'; //this.style.display = 'none';
-      console.log("ŗesponse.id=", response.id);
+      // console.log("response.id=", response.id);
 
       //Tālāk nodrošinā to, lai no db un api iegūtās vērtības attēlotos HTML bez lapas pārlādes.
       //atrodam elementu pēc id un piešķiram mainīgajam update_comment
@@ -84,7 +84,7 @@ form_update.onsubmit = function (event) {
       const update_comment = document.querySelector('[data-id="' + response.id + '"]');
 
       //Iekš atlasītā elementa atrodam message un update laukus un to atribūtā text.Content (saturā) ieliekam vērtības, kas mums zināmas caur respones.comment.message author... 
-      update_comment.querySelector('.message').textContent = response.comment.message;
+      // update_comment.querySelector('.message').textContent = response.comment.message;
       update_comment.querySelector('.email').textContent = response.comment.email;
       update_comment.querySelector('.phone').textContent = response.comment.phone;
       update_comment.querySelector('.author').textContent = response.comment.author;
@@ -176,7 +176,7 @@ function addComment(id, author, email, phone, message) {
       };
 
      /** komentāru blokā ar append pievienosim new_comment */
-    comment_block.append(new_comment)
+    comment_block.append(new_comment);
 }
 
 //garais pieraksts: document.querySelector('popup').onclick=function{}

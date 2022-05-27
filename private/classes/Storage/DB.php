@@ -78,7 +78,7 @@ class DB
         foreach ($entry as $key => $value) {
            //Iekš $column_value_str pievienosim klāt sākumā atslēgu = key, lai dabūtu, piemēram, author vērtību.
            //Lai ievietotu viena simbola pēdiņu, tā jāieliek dubultajās pēdiņās.
-           //šī rinda var izpildīties vairākkārt. Un izpildoties pēdējo reizi arī beigās tiks pieliktas pēdiņas, tāpēc nākošajā rindā tiek izmantota funkcija rtrim();
+           //Šī rinda var izpildīties vairākkārt. Un izpildoties pēdējo reizi arī beigās tiks pieliktas pēdiņas, tāpēc nākošajā rindā tiek izmantota funkcija rtrim();
            $column_value_str .= ' ' . $key . "=" . "'" . $this->conn->real_escape_string($value) . "',";
             
             // Piemērs: $sql = "UPDATE " . $this->table_name . SET author='Vineta', email='vv@gmail.com', phone'+371123123', message="Sveiki Pasaule!' WHERE id=$id";
