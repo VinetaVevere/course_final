@@ -16,13 +16,25 @@ class Comments
         $this->db_comments = new DB('contacts'); // Izveidots DB objekts. Pārsaukts no $db uz $comment_manager, lai pēc nosaukuma saistīts ar komentāru tabulu datu bāzē. db_comments ir objekts no šī: new DB('contacts')
     }
 
+    /**
+     * getAll() funkcija uztaisa pieprasījumu uz šejieni: $this->db_comments->getAll(). Ierakstām iekš mainīgā $result. Tur būs resultāts, kas tiks saņemts no db.php
+     */
     public function getAll() {
+        $result = $this->db_comments->getAll();
         //tiks atgriezts masīvs
+        
+        if ($result === false) { 
+            return [
+                'status' => false,
+                'error_msg'=>  $this->db_comments->getError() //Atkļūdošanai. Piemēram, nepareizam db nosaukumam. $this->db_comments = new DB('contacts_111')
+            ];
+        }
+
         return [
             'status' => true, //=> ir piešķiršanas operators, kad veido masīvu
-            'comments' => $this->db_comments->getAll() // getAll būs mūsu izveidota metode, 'comments' => $comment_manager ->getAll() // getAll būs mūsu izveidota metode. -> izmanto, lai piekļūtu objekta metodēm un īpašībām.
+            'comments' => $result // getAll būs mūsu izveidota metode, 'comments' => $comment_manager ->getAll() // getAll būs mūsu izveidota metode. -> izmanto, lai piekļūtu objekta metodēm un īpašībām.
                 //caur šo objektu  $this->db_comments, kas izveidots no klases class DB, tiekam pie šis klases metodes getAll(), lai dabūtu visus ierakstus no datu bāzes. Objekts var dabūt mums visas klases objektus.
-        ];     
+        ];   
     }
 
     public function get() {

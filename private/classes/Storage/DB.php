@@ -37,7 +37,7 @@ class DB
 
         // Iesim cauri šim masīvam $entry un katru reizi iekš šī {} cikla, būs pieejam šī konkrētā ieraksta atslēga $key un vērtība  $value. Masīvs kā tabula 
         // api.php 'author' (atslēga) => $_POST['author'] (vērtība),
-        //izveidos $column_str, kurā ejot cauri ciklam būs atslēgas author, email, phone, message,  Viens, pēdējais komats paliek lieks
+        // izveidos $column_str, kurā ejot cauri ciklam būs atslēgas author, email, phone, message,  Viens, pēdējais komats paliek lieks
         $column_str = '';
         $value_str = '';
         //Jāizveido mainīgais, kas saturēs šo te tekstu: 'Vineta', 'vineta.vevere@gmail.com' , '+3711112222', 'Sveiki pasaule' katrs vārds ielikts pediņās
@@ -79,9 +79,11 @@ class DB
            //Iekš $column_value_str pievienosim klāt sākumā atslēgu = key, lai dabūtu, piemēram, author vērtību.
            //Lai ievietotu viena simbola pēdiņu, tā jāieliek dubultajās pēdiņās.
            //Šī rinda var izpildīties vairākkārt. Un izpildoties pēdējo reizi arī beigās tiks pieliktas pēdiņas, tāpēc nākošajā rindā tiek izmantota funkcija rtrim();
+           //Ievēro atstarpes un neveido liekas atstarpes. 
            $column_value_str .= ' ' . $key . "=" . "'" . $this->conn->real_escape_string($value) . "',";
-            
+
             // Piemērs: $sql = "UPDATE " . $this->table_name . SET author='Vineta', email='vv@gmail.com', phone'+371123123', message="Sveiki Pasaule!' WHERE id=$id";
+            // Piemērs: $sql = "UPDATE contacts SET  author=Vineta, email='vv@gmail.com', phone'+371123123', message="Sveiki Pasaule!' WHERE id=$id";
         }
         //noņemam pēdējo komatu un ierakstīsim tajā pašā mainīgajā. Tagad šo mainīgo $column_value_str var ielikt šajā vietā: author='Vineta', email='vv@gmail.com', phone'+371123123', message="Sveiki Pasaule!
         $column_value_str = rtrim($column_value_str, ',');
@@ -142,7 +144,7 @@ class DB
     public function deleteEntry(int $id) {
         $sql = "DELETE FROM " . $this->table_name . " WHERE id=$id";
 
-        //salīdzinājums vienmēr atgriezīs boolean tipa vērtību. ja šie nebūs vienādi, tad būs false.
+        //salīdzinājums vienmēr atgriezīs boolean tipa vērtību. Ja šie nebūs vienādi, tad būs false.
         return ($this->conn->query($sql) === true);
     }
 

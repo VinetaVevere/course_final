@@ -606,6 +606,37 @@ img {
   display: none;
 }
 
+#upload_form {
+  background: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+  max-width: 25rem;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin-bottom: 20px;
+}
+
+#upload_form button {
+  background: #C4C4C4;
+  border-radius: 0.25rem;
+  border: 0;
+  padding: 8px;
+  margin-top: 20px;
+  color: #FFFFFF;
+}
+
+#upload_form input[type=text], #upload_form textarea {
+  margin-bottom: 10px;
+  border-radius: 0.25rem;
+  padding: 8px;
+}
+
 .comments {
   width: 70%;
   padding: 1rem;

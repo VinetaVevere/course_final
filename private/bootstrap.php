@@ -1,8 +1,11 @@
 <?php
 
 //bottstrop fails ir pirmais fails no php, kurš ielādējas
-//Atkļūdošanas režīms. izvērstā veidā
-define('DEBUG_MODE', true);
+
+define('DEBUG_MODE', true); //Atkļūdošanas režīms. izvērstā veidā. ir db procedūra public function getError()
+define('PRIVATE_DIR', __DIR__ . '/'); // __DIR__ saturēs ceļu uz to mapi, kur tas atrodas. Tas ir ceļu uz private mapi. un šo ierakstīsim PRIVATE_DIR mapē. PRIVATE_DIR var izmantot jebkurā citā failā un tas norādīs uz Private mapi
+define('UPLOAD_DIR', PRIVATE_DIR . 'uploads/'); //šajā un PRIVATE_DIR mapēs rakstīsim kaut ko iekšā parasti, tāpēc liekam '/'
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
